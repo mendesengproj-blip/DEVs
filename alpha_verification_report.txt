@@ -1,8 +1,0 @@
-=== Alpha numerical verification ===
-Hernquist: M_tot=1e11 Msun, r_s=5 kpc; beta=0.0075
-Range used: 0.5 < r/kpc < 100
-alpha_num mean = 0.6667
-alpha_num std  = 0.0022
-max |alpha_num - 2/3| = 0.0000
-fraction within +/-0.05 of 2/3: 100.0%
-VEREDITO: CONFIRMADO

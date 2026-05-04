@@ -1,12 +1,45 @@
+# Dados SPARC (baixar de http://astroweb.cwru.edu/SPARC/)
+sparc_data/
+*.dat
+
+# Resultados gerados automaticamente
+results_sparc*.csv
+figures/results_*.csv
+
+# Python
 __pycache__/
 *.pyc
-.claude/
-*.aux
-*.log
-*.out
-*.toc
-*.bbl
-*.blg
-*.synctex.gz
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+.eggs/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Ambiente virtual
+venv/
+env/
+.env
+
+# Sistema operacional
 .DS_Store
+Thumbs.db
+desktop.ini
+
+# Arquivos temporários
+*.tmp
+*.log
+*.bak
+
+# PDFs do paper (repositório só guarda código)
+*.pdf
+
+# Claude Code
+.claude/
+
+# Embedded subrepo
 DEVs/

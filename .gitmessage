@@ -1,0 +1,18 @@
+# Tipo: feat|fix|docs|refactor|test
+# Escopo: theory|sparc|udg|cosmology|figures|paper
+#
+# Formato: tipo(escopo): descrição curta
+#
+# Exemplos:
+#   feat(theory): add non-linear coupling term to F(X)
+#   fix(sparc): correct M/L lower bound for gas-dominated dwarfs
+#   docs(readme): update citation with arXiv number
+#   refactor(cosmology): vectorize growth equation solver
+#
+# Corpo (opcional):
+#   - O que mudou e por quê
+#   - Referência a equações do paper se relevante
+#
+# Rodapé (opcional):
+#   Paper eq: (X)
+#   Closes: #issue
