@@ -1,0 +1,7 @@
+Constraint removido    beta_best   Delta_beta/sigma   chi2_red
+baseline               0.00746      0.00             0.0337
+SDSS galaxies          0.00744     -0.00             0.0444
+CFHTLenS               0.00763      0.03             0.0116
+MACS J1206             0.00811      0.11             0.0360
+A1689                  0.00698     -0.08             0.0401
+Coma outer             0.00702     -0.07             0.0417

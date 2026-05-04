@@ -1,0 +1,57 @@
+Corrections applied to dev_paper_final.tex (base: dev_paper_v4.tex)
+======================================================================
+
+C1 — Fisher SNR paragraph (lines 723-738)
+    Replaced the prose "yields a combined stack SNR = 0.85" with a
+    formal display equation SNR_stack = 0.85; added \cite{vanDokkum2015}
+    for the Euclid O(300) UDG forecast, and added Fig. ref to fig:fisher.
+
+C2 — Expanded UDG analysis note (lines 652-661)
+    Inserted new paragraph after "All six systems have predicted slip
+    eta-1 > 1%..." discussing 12-system expanded analysis, deep-MOND vs
+    transition regime, with citations \cite{vanDokkum2015,Lelli2016}.
+
+C3 — Bullet Cluster appendix (lines 871-924)
+    Inserted new \section{Bullet Cluster: Order-of-Magnitude Estimate}
+    with \label{app:bullet} after Appendix B (nu function) and before
+    \bibliographystyle.  Includes g_bullet = 21.3 a0, ram-pressure
+    estimate Delta x ~ 216 kpc, and falsification disclaimer.
+
+C4 — Simpson 2013 citation (line 691)
+    Replaced "Simpson et al. (2013)" with "Simpson et al.~\cite{Simpson2013}"
+    in Table IV (CFHTLenS row).  Verified that Simpson2013 entry already
+    exists in dev_refs.bib at line 195.
+
+C5 — "15 measurements" -> 7 (lines 514-517)
+    Replaced the list of 15 surveys (6dFGS, SDSS-MGS, BOSS DR12,
+    eBOSS DR16, WiggleZ, VIPERS, DESI Y1) with the actual 7 surveys
+    in Table II:  6dFGS+MGS, BOSS LOWZ, BOSS CMASS, eBOSS LRG,
+    eBOSS QSO, DESI BGS, DESI LRG.  No remaining "15 data points".
+
+Verification (post-edit greps):
+   FORBIDDEN strings absent:
+     - "SNR = 5.4" / "SNR=5.4"          NOT FOUND
+     - "+0.08"                          NOT FOUND
+     - "11.44" / "11.36"                NOT FOUND
+     - "15 measurements" / "15 data points"  NOT FOUND
+     - "Simpson et al. (2013)" without \cite        NOT FOUND
+   REQUIRED strings present:
+     - SNR_{\rm stack} = 0.85           line 726
+     - Delta chi^2 = -0.22              lines 55, 544, 555, 782
+     - \label{app:bullet}               line 874
+     - Simpson et al.~\cite{Simpson2013}  line 691
+
+LaTeX compilation:
+   pdflatex / latexmk / miktex are NOT installed on this machine.
+   Compilation could not be performed. Recommended local commands:
+       pdflatex dev_paper_final.tex
+       bibtex   dev_paper_final
+       pdflatex dev_paper_final.tex
+       pdflatex dev_paper_final.tex
+   See latex_warnings.txt for the (necessarily empty) warning list.
+
+Bibliography sanity:
+   - vanDokkum2015 present in dev_refs.bib  (line 145)
+   - Lelli2016     present                 (line 101)
+   - Clowe2006     present                 (line 33)
+   - Simpson2013   present                 (line 195)

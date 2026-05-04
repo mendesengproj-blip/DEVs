@@ -1,0 +1,24 @@
+LaTeX compilation status for dev_paper_final.tex
+=================================================
+
+STATUS: NOT COMPILED — no LaTeX engine found on this machine.
+   Searched for: pdflatex, latexmk, miktex.  None present.
+
+To compile locally, run:
+   pdflatex dev_paper_final.tex
+   bibtex   dev_paper_final
+   pdflatex dev_paper_final.tex
+   pdflatex dev_paper_final.tex
+
+Static checks performed instead (no compilation):
+  * All \cite{} keys appear in dev_refs.bib:
+      vanDokkum2015, Lelli2016, Clowe2006, Simpson2013
+  * \label{app:bullet} defined; not referenced anywhere yet
+    (referenced only via the section title — OK).
+  * No remaining occurrences of obsolete numbers
+    (5.4, +0.08, 11.44, 11.36, 15 measurements / 15 data points).
+  * Bibliography style line preserved (\bibliographystyle{apsrev4-2}).
+  * Document still ends with \end{document}.
+
+Once a TeX distribution is available, capturing pdflatex stdout
+into this file is sufficient to complete the audit trail.

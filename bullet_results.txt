@@ -1,0 +1,25 @@
+=== Bullet Cluster DEV Analysis ===
+
+M_tot = 1.65e+15 Msun
+r_c = 300 kpc
+v_rel = 3000 km/s
+
+g_bullet = 2.556e-09 m/s^2
+a0 = 1.20e-10 m/s^2
+g_bullet / a0 = 21.30
+==> Regime NEWTONIAN (mu -> 1); DEV slip suppressed
+
+tau_A (rigidity timescale) ~ 1.630e-02 Myr
+t_cross = r_c/v_rel = 97.77 Myr
+tau_A / t_cross = 1.667e-04
+(tau_A << t_cross: A_mu rastreia theta quase instantaneamente)
+
+eta-1 at r_c2 = 1.6007e-03
+
+--- Separation estimates (ram-pressure lag model) ---
+f_decel=0.3: Delta_x = 216 kpc
+f_decel=0.1: Delta_x = 72 kpc
+f_decel=0.5: Delta_x = 360 kpc
+Observed: ~200 kpc
+
+==> CONSISTENT with Bullet Cluster observation

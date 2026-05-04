@@ -1,0 +1,6 @@
+=== Beta consistency: galactic vs cosmological ===
+Galactic    : beta=0.00746  1sigma=[0.00153,0.01336]
+Cosmological: beta=0.04557  1sigma=[0.00000,0.09873]
+Beta_max excluido 3sigma: 0.2203  (paper claim: > 0.1)
+Delta_chi2 fs8 (DEV - LCDM) = -0.2190
+Overlap dos intervalos 1-sigma: SIM (CONSISTENTE)

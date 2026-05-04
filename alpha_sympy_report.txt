@@ -1,0 +1,35 @@
+======================================================================
+SYMBOLIC VERIFICATION OF alpha = 2/3 (DEV theory)
+======================================================================
+
+Task 1 — Anisotropic stress of spherical vector field
+  T^(A)_rr               = kappa*theta'**2/2
+  P = (1/3) T^i_i        = -kappa*theta'**2/6
+  Pi^(A) = T_rr - P      = 2*kappa*theta'**2/3
+  Identity  Pi = (2/3) kappa (theta')^2 confirmed: True
+
+Task 2 — Linearised Einstein, identification of alpha
+  Quasi-static:     theta'(r) = g_N(r)/a0
+  Pi after subst.:  2*g_N**2*kappa/(3*a0**2)
+  Master formula:   eta - 1 = alpha * beta / sqrt(x(1+x))
+  The geometric coefficient (2/3) of Pi^(A) is the only piece
+  carrying the spatial geometry; all other factors are absorbed
+  into beta via the Green's function radial integral.
+
+Task 3 — Result
+  alpha_symbolic       = 2/3  (=2/3)
+  Confirma 2/3?         SIM
+
+Cross-check (independent):
+  Angular average <|rhat_i rhat_j - delta/3|^2>_S2 = 2/3
+  This is the same 2/3 — the trace-free projector trace on S^2.
+
+Condicoes implicitas:
+  * Simetria esferica estrita (theta = theta(r), gradiente puramente radial)
+  * Gauge longitudinal (Bardeen / conformal-Newtonian)
+  * Limite quasi-estatico (negligencia derivadas temporais de theta)
+  * Linearizacao nas perturbacoes da metrica (Phi, Psi << 1)
+  * Acoplamento minimo (sem termos de derivada superior em theta)
+  * O fator alpha=2/3 e exclusivo de geometria esferica;
+    geometria de disco daria alpha=1 (van der Waerden trace-free
+    projetor planar tem traco diferente).

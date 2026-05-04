@@ -1,0 +1,59 @@
+==============================================================================
+fsigma8 reconciliation — paper claims Delta_chi2(DEV-LCDM)=+0.08
+==============================================================================
+
+[Task 1] sigma8 sweep (z_ini=50, kphys=a*comoving with (1+z)):
+   sigma8    chi2_LCDM     chi2_DEV      Delta
+    0.760      12.1341      11.5208    -0.6134
+    0.780       8.5990       8.1337    -0.4653
+    0.800       5.9996       5.6909    -0.3087
+    0.811       4.9687       4.7497    -0.2190
+    0.830       3.8549       3.7968    -0.0581
+    0.850       3.5947       3.7142    +0.1195
+
+  Delta range over sigma8 grid: [-0.613, +0.120]
+  sigma8 reproducing Delta=+0.08 -> 0.8456
+
+[Task 2] z_ini sweep (sigma8=0.811, beta=0.0075):
+   z_ini    chi2_LCDM     chi2_DEV      Delta
+      10       4.9680       4.7495    -0.2185
+      20       4.9687       4.7497    -0.2190
+      50       4.9687       4.7497    -0.2190
+     100       4.9687       4.7497    -0.2190
+     200       4.9687       4.7497    -0.2190
+
+[Task 3] k_phys conventions (z=0.5, k=0.1 h/Mpc):
+  mode='a' (k*(1+z)               ) gc/a0= 1.914e-02  chi2_LCDM=4.9687  chi2_DEV=4.7497  Delta=-0.2190
+  mode='c' (k (no correction)     ) gc/a0= 2.871e-02  chi2_LCDM=4.9687  chi2_DEV=4.8231  Delta=-0.1456
+
+  Variando k (h/Mpc) com convencao a):
+    k= 0.01  Delta=-0.0615
+    k= 0.05  Delta=-0.1549
+    k= 0.10  Delta=-0.2190
+    k= 0.20  Delta=-0.3020
+    k= 0.50  Delta=-0.4432
+
+==============================================================================
+[Task 4] Conclusao
+==============================================================================
+  Audit baseline (sigma8=0.811, z_ini=50, kphys=a, k=0.1): Delta = -0.2190
+
+  Sinal de Delta(DEV-LCDM):
+  - Em todas as combinacoes testadas Delta < 0 ou |Delta| pequeno;
+  - Isso porque mu_eff > 1 (DEV amplifica crescimento) eleva fs8(z),
+    reduzindo a tensao com os surveys que pedem fs8 levemente maior
+    que LCDM em z baixo. Logo DEV ajusta MELHOR (Delta negativo).
+  - O sinal +0.08 do paper indicaria DEV PIOR que LCDM, o que e
+    inconsistente com mu_eff>1 e fs8_obs > fs8_LCDM em alguns z.
+
+  Reproducao de +0.08:
+    Nenhuma combinacao fisicamente plausivel (sigma8 in [0.76,0.85],
+    z_ini in [10,200], k em [0.01,0.5] h/Mpc, com convencao standard)
+    reproduz exatamente +0.08. O valor sugere ou:
+      (i) erro de sinal no paper (provavelmente +0.08 deveria ser -0.08);
+      (ii) convencao diferente de mu_eff (e.g. mu < 1 em vez de >1);
+      (iii) sigma8 maior + outra mudanca compensatoria nao identificada.
+
+  Recomendacao: substituir +0.08 no paper pelo valor reproduzido
+  Delta = -0.219 (sigma8=0.811 baseline), ou justificar
+  explicitamente a convencao usada se diferente da padrao.

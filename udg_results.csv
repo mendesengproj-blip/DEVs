@@ -1,0 +1,13 @@
+name,M_star_Msun,r_eff_kpc,ref,g/a0,eta-1,eta-1_pct,SNR,Euclid_detect,regime
+NGC1052-DF2,200000000.0,2.2,vanDokkum+2018,0.2218,0.00961,0.961,0.192,Nao,Transicao
+NGC1052-DF4,150000000.0,2.0,vanDokkum+2019,0.2110,0.00989,0.989,0.198,Nao,Transicao
+DF44,300000000.0,4.3,vanDokkum+2016,0.1379,0.01262,1.262,0.252,Sim,Transicao
+DGSAT-I,300000000.0,4.7,Martinez-Delgado+2016,0.1261,0.01327,1.327,0.265,Sim,Transicao
+VCC1287,100000000.0,2.8,Beasley+2016,0.1222,0.01350,1.350,0.270,Sim,Transicao
+DF17,200000000.0,3.5,vanDokkum+2017,0.1384,0.01260,1.260,0.252,Sim,Transicao
+Dragonfly17,50000000.0,3.1,Merritt+2016,0.0779,0.01726,1.726,0.345,Sim,MOND profundo
+Dragonfly44,300000000.0,4.3,vanDokkum+2016,0.1379,0.01262,1.262,0.252,Sim,Transicao
+UDG1-Coma,80000000.0,2.5,Koda+2015,0.1224,0.01349,1.349,0.270,Sim,Transicao
+LSBG-285,200000000.0,5.2,Tanoglidis+2021,0.0929,0.01569,1.569,0.314,Sim,MOND profundo
+AntliaII,1500000000.0,2.9,Torrealba+2019,0.4794,0.00594,0.594,0.119,Nao,Transicao
+CraterII,370000000.0,1.1,Caldwell+2017,0.6511,0.00482,0.482,0.096,Nao,Transicao

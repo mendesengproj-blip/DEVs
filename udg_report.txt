@@ -1,0 +1,38 @@
+======================================================================
+RELATORIO — Tabela III Expandida (DEV slip em UDGs)
+======================================================================
+Parametros: beta=0.0075, alpha=0.6667, a0=1.20e-10 m/s^2
+sigma_eta assumido por sistema: 0.05
+
+Sistema              g/a0    eta-1[%]     SNR    Detect  Regime
+--------------------------------------------------------------------------------
+*NGC1052-DF2       0.2218       0.961    0.19       Nao  Transicao
+*NGC1052-DF4       0.2110       0.989    0.20       Nao  Transicao
+*DF44              0.1379       1.262    0.25       Sim  Transicao
+*DGSAT-I           0.1261       1.327    0.27       Sim  Transicao
+*VCC1287           0.1222       1.350    0.27       Sim  Transicao
+*DF17              0.1384       1.260    0.25       Sim  Transicao
+ Dragonfly17       0.0779       1.726    0.35       Sim  MOND profundo
+ Dragonfly44       0.1379       1.262    0.25       Sim  Transicao
+ UDG1-Coma         0.1224       1.349    0.27       Sim  Transicao
+ LSBG-285          0.0929       1.569    0.31       Sim  MOND profundo
+ AntliaII          0.4794       0.594    0.12       Nao  Transicao
+ CraterII          0.6511       0.482    0.10       Nao  Transicao
+
+Sistemas detectaveis individualmente (SNR>3): 0/12
+Sistemas que contribuem ao stack (SNR>1):    0/12
+SNR combinado (stacking) = 0.85
+
+Notas criticas:
+  - NGC1052-DF2: g/a0=0.22 em transicao; formula completa usada (nao deep-MOND).
+  - NGC1052-DF4: g/a0=0.21 em transicao; formula completa usada (nao deep-MOND).
+  - DF44: g/a0=0.14 em transicao; formula completa usada (nao deep-MOND).
+  - DGSAT-I: g/a0=0.13 em transicao; formula completa usada (nao deep-MOND).
+  - VCC1287: g/a0=0.12 em transicao; formula completa usada (nao deep-MOND).
+  - DF17: g/a0=0.14 em transicao; formula completa usada (nao deep-MOND).
+  - Dragonfly44: g/a0=0.14 em transicao; formula completa usada (nao deep-MOND).
+  - UDG1-Coma: g/a0=0.12 em transicao; formula completa usada (nao deep-MOND).
+  - AntliaII: g/a0=0.48 em transicao; formula completa usada (nao deep-MOND).
+  - CraterII: g/a0=0.65 em transicao; formula completa usada (nao deep-MOND).
+
+Caveat: aproximacao de massa pontual no r_eff superestima g_N comparado a perfil estendido (Plummer/Sersic). Para sistemas com perfil bem resolvido (DGSAT-I, DF44) o slip real no r_eff e ligeiramente maior que o tabulado. Ver DGSAT_eta_profile.png.

@@ -1,0 +1,12 @@
+Survey         z      fs8_obs  sigma   fs8_LCDM  fs8_DEV
+6dFGS+MGS      0.15   0.490    0.045   0.449     0.453
+BOSS LOWZ      0.38   0.497    0.045   0.470     0.473
+BOSS CMASS     0.51   0.458    0.038   0.470     0.472
+eBOSS LRG      0.70   0.473    0.044   0.460     0.461
+eBOSS QSO      1.48   0.462    0.045   0.378     0.378
+DESI BGS       0.51   0.484    0.044   0.470     0.472
+DESI LRG       0.93   0.434    0.041   0.439     0.440
+
+chi2_LCDM = 4.969
+chi2_DEV  = 4.750
+Delta_chi2 (DEV-LCDM) = -0.219  (paper claim: +0.08)

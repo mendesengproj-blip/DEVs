@@ -1,0 +1,15 @@
+=== Beta calibration diagnostics ===
+beta_best = 0.007456
+chi2_min = 0.1346
+dof = 4
+chi2_red = 0.0337
+p-value (chi2,dof=4) = 0.9978
+1-sigma range: [0.00153, 0.01336]  (sigma~0.00592)
+2-sigma range: [0.00010, 0.01931]
+
+Effective sigma rescaling factor (chi2_red->1): 0.183
+  i.e. quoted sigmas appear ~5.5x too large
+beta_best with rescaled sigmas = 0.007456  (unchanged: location of min invariant)
+
+Interpretacao: p>>0.9 -> erros provavelmente superestimados/correlacionados.
+Numero de pontos (5) com 1 parametro livre torna o fit pouco restritivo.
