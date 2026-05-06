@@ -43,3 +43,29 @@ desktop.ini
 
 # Embedded subrepo
 DEVs/
+
+# Arquivos de trabalho/exploração não destinados ao repo
+audit_*
+alpha_*
+beta_*
+bullet_*
+fsigma8_*
+udg_*
+compare_v1_v2.py
+stability.py
+vector_scale.py
+degeneracies.py
+dev_paper.tex
+dev_paper_v*.tex
+dev_paper_final.tex
+dev_refs.bib
+*.csv
+*.txt
+files/
+figures/
+
+# Mas NÃO ignorar dentro das pastas dos papers
+!paper_I/
+!paper_I/**
+!paper_II/
+!paper_II/**

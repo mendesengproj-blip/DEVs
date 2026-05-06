@@ -5,7 +5,6 @@ of the Quantum Vacuum**
 
 *Miqueias Alves Mendes — Independent Researcher, 2026*
 
-[![arXiv](https://img.shields.io/badge/arXiv-gr--qc-red)](https://arxiv.org/)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue)](https://python.org)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
@@ -18,20 +17,32 @@ DEV proposes that dark matter is not a primordial particle species but a
 Newtonian acceleration falls below the critical scale
 a₀ ≃ 1.2×10⁻¹⁰ m/s².
 
-The theory is anchored by a Dirac-Born-Infeld (DBI) kinetic term that
-reproduces the standard MOND interpolation function as its quasi-static
-limit, and a massive vector field that generates a unique gravitational
-slip signature detectable by Euclid.
+This repository contains the complete analysis pipeline for the
+DEV theory papers.
 
-## Key Results
+## Papers in this Series
 
-| Result | Value |
-|--------|-------|
-| SPARC galaxies fitted | 167 |
-| Median χ²_ν | 1.20 |
-| Δχ² vs ΛCDM (fσ₈) | −0.22 (DEV marginally better) |
-| Gravitational slip in UDGs | 2–10% |
-| Fisher SNR (Euclid, N=300) | ~8σ |
+### Paper I — Foundational Theory
+**"Vacuum Excitation Dynamics: A Scalar-Vector-Tensor Field Theory of
+Dark Matter as a Phase Transition of the Quantum Vacuum"**
+
+- DEV action and DBI kinetic term
+- SPARC fit (167 galaxies, χ²ᵥ = 1.20)
+- Cosmological consistency via fσ₈ (Δχ² = -0.22 vs ΛCDM)
+- Falsifiable UDG slip prediction (2-10%, Euclid-detectable)
+- Bullet Cluster order-of-magnitude estimate
+
+📁 Code: [`paper_I/`](paper_I/)
+
+### Paper II — Stability and Robustness
+**"Stability, Scale Constraints, and Parameter Robustness of
+Vacuum Excitation Dynamics"**
+
+- Sound speed: c²ₛ ∈ [1/3, 1) — stable everywhere
+- Vector rigidity scale: L < 17 pc from SPARC
+- β–Υ orthogonality and jackknife robustness (1.3% spread)
+
+📁 Code: [`paper_II/`](paper_II/)
 
 ## Installation
 
@@ -41,58 +52,52 @@ cd DEVs
 pip install -r requirements.txt
 ```
 
-## Data
+## Data Source
 
-SPARC rotation curves are **not included** in this repository due to
-redistribution restrictions. Download from:
+SPARC rotation curves are not redistributed in this repository.
+Download from: http://astroweb.cwru.edu/SPARC/
 
-> Lelli, McGaugh & Schombert (2016), AJ 152, 157
-> http://astroweb.cwru.edu/SPARC/
+Place in `paper_I/sparc_data/` for use with the pipeline.
 
-Place the downloaded `.dat` files in a folder named `sparc_data/`.
+## Reproducing the Results
 
-## Usage
-
+### Paper I (foundational)
 ```bash
-# Run complete analysis
-python run_analysis.py
-
-# Fit SPARC catalog (requires sparc_data/ folder)
-python sparc.py sparc_data/
-
-# Calibrate β parameter
-python calibrate_beta.py
-
-# Generate all figures
+cd paper_I
 python run_analysis.py
 ```
 
-## Module Structure
+### Paper II (stability)
+```bash
+cd paper_II
+python stability.py
+python vector_scale.py
+python degeneracies.py
+```
 
-| File | Description |
-|------|-------------|
-| `theory.py` | Core DEV equations: μ(x), ν(y), η(g), v_circ |
-| `sparc.py` | SPARC data loader and rotation curve fitting |
-| `udg.py` | Gravitational slip predictions for UDGs |
-| `cosmology.py` | Modified growth equation and fσ₈ |
-| `calibrate_beta.py` | β calibration from lensing constraints |
-| `run_analysis.py` | Full analysis pipeline |
+## Repository Structure
 
-## Figures
-
-All figures are pre-generated in `figures/` and correspond directly
-to the paper.
+```
+DEVs/
+├── paper_I/          # Foundational paper code
+├── paper_II/         # Stability follow-up code
+├── README.md         # This file
+├── .gitignore
+├── requirements.txt
+└── .gitmessage       # Commit message template
+```
 
 ## Citation
 
 If you use this code, please cite:
-Mendes, M. A. (2026). Vacuum Excitation Dynamics: A Scalar-Vector-Tensor
-Field Theory of Dark Matter as a Phase Transition of the Quantum Vacuum.
+
+Mendes, M. A. (2026). *Vacuum Excitation Dynamics: A Scalar-Vector-Tensor
+Field Theory of Dark Matter as a Phase Transition of the Quantum Vacuum*.
 arXiv:XXXX.XXXXX [gr-qc]
 
 ## License
 
-MIT License — see LICENSE file.
+MIT License
 
 ## Contact
 
@@ -102,4 +107,4 @@ https://github.com/mendesengproj-blip/DEVs
 
 ---
 
-*Pipeline publicly available for full reproducibility.*
+*All code publicly available for full reproducibility.*
