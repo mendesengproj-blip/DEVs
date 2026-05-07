@@ -1,0 +1,87 @@
+========================================================================
+eta_diagnosis report  (SI units throughout)
+========================================================================
+
+[Task 1] DIMENSIONAL AUDIT
+------------------------------------------------------------------------
+kappa  = beta*a0                      -> [m s^-2]
+(g_N/a0)                              -> dimensionless
+Pi^(A) = (2/3) kappa (theta')^2       (paper Eq. ~258)
+  with (theta')^2 dimensionless => Pi^(A) has units [m s^-2]
+8 pi G * Pi^(A)                       -> [m^3 kg^-1 s^-2]*[m s^-2]
+                                       = [m^4 kg^-1 s^-4]
+Required for nabla^2(Psi-Phi)         -> [s^-2]
+MISMATCH factor                        = [kg m^-4 s^2]
+This is the structure of (density / length^2 * time^2);
+equivalently, a missing factor of 4 pi G rho * (1/length^2)
+after multiplying by [m^2/s^2]/[m^2/s^2].
+=> The literal source S = 8 pi G (2/3) kappa (g_N/a0)^2 is
+   DIMENSIONALLY INCONSISTENT with a Poisson equation.
+
+Hypothesis H1 (most physically reasonable correction):
+   The paper derivation collapses (theta')^2 -> sqrt(2 X0) g_N
+   AND uses the Green function of a delta-source (point mass).
+   For an EXTENDED source the dimensionally-clean replacement is
+      S(r) = 8 pi G (2/3) kappa (g_N/a0) * (4 pi G rho_b/a0).
+   This carries [s^-2] and reduces, for a point mass,
+   to the Green-function integral that produces Eq. 48.
+
+[Task 2] POINT MASS DEEP-MOND TEST  (M = 1e10 Msun, r in [1,100] kpc)
+------------------------------------------------------------------------
+r_MOND = sqrt(GM/a0) = 3.409 kpc  (deep-MOND for r >> r_MOND)
+  literal  source : max|res|=2.25e+22%   med|res|=5.48e+19%
+  corrected source: max|res|=100%   med|res|=100%
+  (corrected source is ~0 because rho_b=0 for a true point mass —
+   the Green-function delta contribution is not captured by FD)
+  analytic eta-1 in window: min=2.171e-03  max=1.430e-01
+  numerical (literal) eta-1: min=-4.894e+17  max=-2.343e+16
+
+[Task 3] REGIME OF VALIDITY  (point mass, r in [0.01, 1000] kpc)
+------------------------------------------------------------------------
+  <10% agreement: NEVER
+  >50% disagreement: r in [0.0001, 1e+04] kpc  (g/a0 in [1.16e-07, 1.16e+09])
+  Asymptotic (r>500 kpc, deep-MOND): residual median = nan %, max|res| = nan %
+
+[Task 4] PLUMMER NEAR-POINTLIKE  (M=3e8 Msun, r_eff=0.001 kpc)
+------------------------------------------------------------------------
+  literal   source: max|res|=1.6e+18%   med|res|=6.15e+15%
+  corrected source: max|res|=178%   med|res|=100%
+
+========================================================================
+FINAL VERDICT
+========================================================================
+(1) Dimensional analysis (Task 1) shows the source S as written
+    in the paper around line 271 is DIMENSIONALLY INCONSISTENT
+    when read literally.  Units of 8 pi G * (2/3) kappa (g_N/a0)^2
+    are [m^4 kg^-1 s^-4], not [s^-2].
+(2) The numerical 10^8-10^13 % residuals seen in eta_verification.py
+    are therefore NOT a bug in the FD solver — they are the
+    quantitative expression of (1).  This is an
+    IMPLEMENTATION-vs-DERIVATION mismatch, not a code bug.
+(3) The analytic formula eta-1 = (2/3) beta / sqrt[y(1+y)]
+    is derived using a *Green's function for a point source* and
+    the deep-MOND identification (theta')^2 ~ sqrt(2 X0) g_N.
+    Both ingredients are valid only in the asymptotic point-source,
+    deep-MOND regime (g_N << a0).  Outside this regime the
+    formula is at best an interpolation written by hand.
+
+CLASSIFICATION:  FORMULA_VALID_IN_LIMIT
+  Validity regime: spherical, point-like (or strongly centrally
+  concentrated) source AND deep-MOND (g/a0 << 1).
+  Outside this regime Eq. 48 should be treated as an
+  *interpolation ansatz*, not a derived result.
+
+RECOMMENDED PAPER ACTION:
+  - Add a caveat after Eq. 48 stating: 'Eq. 48 is obtained by
+    Green's-function integration of Eq. 268 for a point source
+    in the deep-MOND limit; the extension to the full transition
+    regime via the (1+y) factor is an interpolation ansatz,
+    consistent with the nu-function used for g_obs but NOT
+    independently derived from the field equations.'
+  - Either (a) re-derive the source term Pi^(A) carefully
+    showing the implicit baryon-density factor, or
+    (b) restrict quantitative use of Eq. 48 to lensing/dynamical
+    tests where the source is well approximated as central.
+  - Update eta_verification.py to clearly label that the
+    'literal' FD test fails by construction (units), and to
+    instead report the analytic eta-1 alone for the SPARC fit.

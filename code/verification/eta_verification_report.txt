@@ -1,0 +1,58 @@
+======================================================================
+VERIFICAÇÃO NUMÉRICA — formula eta(r)-1 = (2/3) beta / sqrt[y(1+y)]
+======================================================================
+
+VEREDITO GERAL: INCORRETO
+  (pior |residual| entre 0.1-200 kpc nos 3 perfis = 33509461436874.28%)
+
+----------------------------------------------------------------------
+Perfil: Hernquist
+  max |residual| = 33509461436874.28 %
+  median |residual| = 11972978103660.95 %
+  melhor concordancia ~ r = 199.14 kpc (|res|=193569215621.81%)
+  pior concordancia  ~ r = 0.10 kpc (|res|=33509461436874.28%)
+  regime profundo MOND (y<0.1): r > 104.0 kpc
+----------------------------------------------------------------------
+Perfil: NFW_truncated
+  max |residual| = 1768370507929.39 %
+  median |residual| = 1446563828147.41 %
+  melhor concordancia ~ r = 199.14 kpc (|res|=134929465287.14%)
+  pior concordancia  ~ r = 0.10 kpc (|res|=1768370507929.39%)
+  regime profundo MOND (y<0.1): r > 132.0 kpc
+----------------------------------------------------------------------
+Perfil: Plummer
+  max |residual| = 568277732.47 %
+  median |residual| = 331818261.40 %
+  melhor concordancia ~ r = 199.14 kpc (|res|=13950352.38%)
+  pior concordancia  ~ r = 3.25 kpc (|res|=568277732.47%)
+  regime profundo MOND (y<0.1): r > 0.0 kpc
+
+DIAGNÓSTICO CRÍTICO:
+  (1) ANÁLISE DIMENSIONAL: a fonte especificada
+        S = 8 pi G * (2/3) * kappa * (g_N/a0)^2
+      tem unidades [m^3/(kg s^2)]*[m/s^2]*[adim] = m^4/(kg s^4),
+      que NAO sao 1/s^2 = unidades de Laplaciano de Psi.
+      Falta um fator de densidade rho (kg/m^3) na expressao.
+  (2) MAGNITUDE: numericamente chi sai ~10^11 vezes maior que
+      o que a formula analitica preve. Isso e consistente com
+      faltar um fator (rho/<rho_escala>) ~ pequeno.
+  (3) Comparado a Eq.268 do paper (nabla^2(Psi-Phi)=8 pi G Pi^A,
+      Pi^A=(2/3)kappa(theta')^2): a formula final eta-1 do paper
+      requer (theta')^2 ~ sqrt(2 X0) g_N e identificacao com a0,
+      que reduz a fonte a algo proporcional a rho_baryonica * g_N,
+      NAO a (g_N/a0)^2 isolado.
+  CORRECAO SUGERIDA:
+      S = 8 pi G * (2/3) * (kappa/a0) * 4 pi G rho * (g_N/g_obs)?
+      ou seja, faltam fator(es) de densidade. A derivacao da Eq.48
+      do paper pula etapas (linha 271): assume Psi=-GM/r local +
+      chi calculado por Green function pontual + identificacao de
+      (theta')^2 com g_N. Isso so vale para fonte pontual no
+      regime profundo MOND. Para perfis estendidos a formula
+      analitica NAO e' reproduzida pela integracao direta.
+
+======================================================================
+VARIANTE B (fonte ~ g_N linear, consistente com Eq.268 do paper)
+======================================================================
+         Hernquist: max|res|=1.7e+14%  med|res|=7.9e+13%
+     NFW_truncated: max|res|=5.5e+13%  med|res|=4.7e+13%
+           Plummer: max|res|=7.1e+11%  med|res|=4.7e+11%
