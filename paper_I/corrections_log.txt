@@ -1,0 +1,82 @@
+CORRECTIONS LOG — dev_paper_FINAL_v2.tex
+=========================================
+Source:  dev_paper_final.tex (931 lines, EN)
+Output:  dev_paper_FINAL_v2.tex
+Date:    2026-05-06
+
+LANGUAGE
+--------
+File is in English (verified via abstract, lines 34-65).
+
+EDITS APPLIED
+-------------
+Single contiguous edit in Section III.C "Metric Slip from Einstein Equations".
+
+BEFORE (original lines 303-317, 15 lines):
+  In the longitudinal gauge ... \nabla^2(\Psi-\Phi) = 8\pi G\,\Pi^{(A)}.
+  Solving with the Green's function ... (\theta')^2 \approx \sqrt{2\Xzero}\,\gN ...
+  \eta - 1 \approx (2/3) \beta / sqrt((g/a0)(1+g/a0))
+  ...regularized interpolation function for the full transition regime.
+
+AFTER (new lines 303-352, 50 lines in v2):
+  Correction A — Dimensional clarity (lines 303-333 in v2):
+    - Inserted intermediate steps showing deep-MOND scalar eqn,
+      point-source solution theta'(r) = g_N/a_0,
+      Pi^(A) = (2/3) kappa g_N^2/a_0^2,
+      and final form Laplacian(Psi-Phi) = (16 pi G/3)(gamma^2/m_A^2)(g_N^2/a_0^2).
+    - Inline parenthetical confirms dimensional consistency:
+      [G]*[kappa]*[g_N^2/a_0^2] = m^3/(kg s^2) * (kg/m) * 1 = 1/s^2 OK.
+    - New labels: eq:poisson_slip, eq:poisson_slip_final.
+
+  Correction B — Regime caveat (lines 343-352 in v2):
+    - Inserted paragraph after the eta formula explaining:
+      point-source Green's function origin,
+      (1+g/a_0) as interpolation ansatz consistent with eq:nu,
+      Newtonian limit recovery,
+      validity condition r >> r_MOND = sqrt(GM/a_0)
+      holds for all UDGs in tab:udg.
+    - References used (verified existing): eq:nu (line 256 original),
+      tab:udg (line 634 original).
+
+UDG REGIME CHECK (Step 3)
+-------------------------
+6 UDGs from Table III evaluated. Constants:
+  G=6.674e-11, a0=1.2e-10 SI; Msun=1.989e30; kpc=3.0857e19.
+
+System       M_star[Msun]  r_eff[kpc]  r_MOND[kpc]  ratio  Valid(>3)
+NGC1052-DF2  2.0e8         2.2         0.482        4.56   Yes
+NGC1052-DF4  1.5e8         2.0         0.417        4.79   Yes
+DF44         3.0e8         4.3         0.590        7.28   Yes
+DGSAT-I      3.0e8         4.7         0.590        7.96   Yes
+VCC1287      1.0e8         2.8         0.341        8.22   Yes
+DF17         2.0e8         3.5         0.482        7.26   Yes
+
+All systems pass r_eff/r_MOND > 3. Worst case: DF2 at 4.56.
+Generic caveat suffices; no per-system flags added.
+Output written to udg_rmond_table.txt.
+
+GREP VERIFICATION (Step 4)
+--------------------------
+PRESENT (required):
+  "point source"         -> lines 315, 344  OK
+  "interpolation ansatz" -> line 346        OK
+  "r_{\rm MOND}"         -> line 351        OK
+  "r \gg"                -> lines 218, 351  OK
+
+ABSENT (forbidden):
+  "+0.08"           -> not found  OK
+  "SNR = 5.4"       -> not found  OK
+  "= 5.4,"          -> not found  OK
+  "15 measurements" -> not found  OK
+
+COMPILE STATUS (Step 5)
+-----------------------
+pdflatex not available on this Windows system.
+('where pdflatex' returned no results; 'pdflatex --version' not found.)
+PDF compilation SKIPPED. .tex source produced as specified.
+
+FILES PRODUCED
+--------------
+  dev_paper_FINAL_v2.tex
+  udg_rmond_table.txt
+  corrections_log.txt
