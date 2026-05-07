@@ -26,23 +26,46 @@ DEV theory papers.
 **"Vacuum Excitation Dynamics: A Scalar-Vector-Tensor Field Theory of
 Dark Matter as a Phase Transition of the Quantum Vacuum"**
 
+> **Status:** Submitted to *Monthly Notices of the Royal Astronomical Society*
+> on 2026-05-05. Manuscript ID: **MN-26-1316-P**.
+> Affiliation correction submitted 2026-05-06.
+
 - DEV action and DBI kinetic term
 - SPARC fit (167 galaxies, χ²ᵥ = 1.20)
 - Cosmological consistency via fσ₈ (Δχ² = -0.22 vs ΛCDM)
 - Falsifiable UDG slip prediction (2-10%, Euclid-detectable)
 - Bullet Cluster order-of-magnitude estimate
+- α = 2/3 derived analytically and verified symbolically (SymPy)
+- Slip formula η−1 = (2/3)β/√[y(1+y)] — Green's-function solution
+  for a point source in deep-MOND, valid for r ≫ r_MOND
+  (verified for all 6 UDG targets; min r_eff/r_MOND = 4.56)
 
-📁 Code: [`paper_I/`](paper_I/)
+📁 Source: [`paper_I/`](paper_I/) — final submitted version:
+[`paper_I/dev_paper_FINAL_v2.tex`](paper_I/dev_paper_FINAL_v2.tex)
 
-### Paper II — Stability and Robustness
+### Paper II — Stability, Robustness, and Naturalness (in preparation)
 **"Stability, Scale Constraints, and Parameter Robustness of
 Vacuum Excitation Dynamics"**
 
-- Sound speed: c²ₛ ∈ [1/3, 1) — stable everywhere
-- Vector rigidity scale: L < 17 pc from SPARC
-- β–Υ orthogonality and jackknife robustness (1.3% spread)
+- Sound speed: c²ₛ ∈ [1/3, 1) — subluminal, ghost-free
+- Vector rigidity scale: L < 17 pc from SPARC → m_A > 3.7×10⁻²⁵ eV
+- β–Υ★ orthogonality and jackknife robustness (1.3% spread)
+- β scale-invariant over 3 decades in g/a₀ (slope = −0.005 ± 0.018)
+- β ≈ (Ω_Λ)^(1/3) within 15% — flagged as numerical coincidence,
+  not a derivation
+- Dark-photon kinetic mixing ruled out (required ε ~ 0.09 ≫ 10⁻³ bound)
 
-📁 Code: [`paper_II/`](paper_II/)
+📁 Source: [`paper_II/`](paper_II/)
+
+### Independent verifications
+
+📁 [`code/verification/`](code/verification/) — symbolic and numerical
+audits backing the analytical claims:
+
+- `alpha_sympy_verification.py` — α = 2/3 exact via SymPy
+- `eta_diagnosis.py` — dimensional analysis and regime diagnosis of
+  the slip formula (confirms validity in the point-source deep-MOND limit)
+- `eta_verification_report.txt` — extended-source verification report
 
 ## Installation
 
@@ -79,12 +102,29 @@ python degeneracies.py
 
 ```
 DEVs/
-├── paper_I/          # Foundational paper code
-├── paper_II/         # Stability follow-up code
-├── README.md         # This file
+├── paper_I/              # Paper I — LaTeX, code, submitted version
+│   ├── dev_paper_FINAL_v2.tex   # version submitted to MNRAS
+│   ├── dev_refs.bib
+│   ├── corrections_log.txt
+│   ├── run_analysis.py, sparc.py, theory.py, udg.py, ...
+│   └── figures/
+├── paper_II/             # Paper II — in preparation
+│   ├── dev_paper_II.tex
+│   ├── stability.py, vector_scale.py, degeneracies.py
+│   ├── beta_naturalness.py, beta_naturalness_section.tex
+│   ├── beta_dimensional_table.txt, beta_naturalness_report.txt
+│   ├── beta_scale_consistency.png
+│   ├── bullet_appendix.tex
+│   ├── udg_rmond_table.txt, table_udg_expanded.tex
+│   └── figures/
+├── code/verification/    # Independent symbolic/numerical audits
+│   ├── alpha_sympy_verification.py + report
+│   ├── eta_diagnosis.py + report
+│   └── eta_verification_report.txt
+├── README.md
 ├── .gitignore
 ├── requirements.txt
-└── .gitmessage       # Commit message template
+└── .gitmessage
 ```
 
 ## Citation

@@ -64,8 +64,10 @@ dev_refs.bib
 files/
 figures/
 
-# Mas NÃO ignorar dentro das pastas dos papers
+# Mas NÃO ignorar dentro das pastas dos papers nem code/
 !paper_I/
 !paper_I/**
 !paper_II/
 !paper_II/**
+!code/
+!code/**
