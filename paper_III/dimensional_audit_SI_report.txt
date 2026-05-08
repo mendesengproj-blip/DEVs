@@ -1,0 +1,84 @@
+Paper III - Task A: dimensional audit (SI, c != 1) and point-mass test
+======================================================================
+
+STEP-BY-STEP DIMENSIONAL DERIVATION
+----------------------------------------------------------------------
+1. Pi^(A) = (2/3) kappa (theta')^2     [theta' dimensionless]
+   For Pi^(A) to be energy density [kg/(m s^2)]:
+       kappa = beta a0^2 / (8 pi G)
+       [kappa] = (m/s^2)^2 / (m^3/(kg s^2)) = kg/(m s^2)   OK
+
+2. Linearized Einstein slip:
+       nabla^2 (Psi - Phi) = (8 pi G / c^2) Pi^(A)
+   [LHS] = (m^2/s^2)/m^2 = 1/s^2
+   [RHS] = m^3/(kg s^2) * 1/(m^2/s^2) * kg/(m s^2)
+         = m^3 kg^-1 s^-2 * s^2/m^2 * kg m^-1 s^-2 = 1/s^2  OK
+
+3. Substituting kappa:
+       S = (2 beta/3) a0^2 (theta')^2 / c^2
+   With (theta')^2 = (g_N / (mu a0))^2 (exact AQUAL spherical):
+       S = (2 beta/3) g_N^2 / (mu^2 c^2)
+   [S] = (m/s^2)^2 / (m^2/s^2) = 1/s^2   OK
+
+4. Deep-MOND limit mu^2 -> g_N/a0:
+       S_dM = (2 beta/3) g_N a0 / c^2
+   [S_dM] = (m/s^2)(m/s^2)/(m^2/s^2) = 1/s^2   OK
+
+CONCLUSION ON UNITS
+   The c^2 factor from the linearized Einstein equation
+   was hidden in the c=1 derivation of Paper I.  Restoring
+   it gives the dimensionally consistent source above.
+
+======================================================================
+TASK B - point-mass numerical test
+======================================================================
+Plummer M=1e10 Msun, r_eff=0.01 kpc, r_MOND=3.41 kpc
+Source used: S = (2 beta/3) g_N^2 / (mu^2 c^2) (exact AQUAL closure).
+
+Deep-MOND window  r in [6.8, 1500] kpc:
+   max |residual eta_num vs eta_anal| = 3.01e+45 %
+   median|residual|                  = 6.43e+28 %
+
+WHAT SOURCE WOULD PAPER I REQUIRE?
+   Computed S_required = laplacian(- Psi (eta_anal-1)) numerically.
+   Ratio S_required / S_correct at sample radii:
+    r [kpc]      y=g_N/a0     S_req/S
+      10.20   1.116e-01   1.037e+08
+     300.21   1.289e-04   -5.326e+08
+    1001.34   1.159e-05   -6.156e-44
+
+INTERPRETATION
+   S_correct (now dimensionally clean) scales as g_N a0 / c^2 ~ 1/r^2
+   in deep-MOND.  But the slip formula of Paper I, eta-1 ~ r sqrt(a0/GM),
+   grows linearly with r and therefore demands a source S_req ~ a0/r.
+   These two functional forms (1/r^2 vs 1/r) are STRUCTURALLY
+   incompatible.  Restoring c^2 fixes the units but does NOT
+   reconcile the radial dependence.
+
+VERDICT: max residual 3.01e+45 % >> 10 %.
+   S_correct (with c^2 and exact AQUAL theta') does NOT reproduce
+   the Paper I analytic formula either.  The discrepancy is now
+   a factor ~ c^2 r / (GM) - the same 10^7 - 10^8 ratio observed
+   in earlier tests.  Per Task B criterion (residual < 10 %),
+   Task C (DGSAT-I) is NOT executed.
+
+STRUCTURAL DIAGNOSIS
+   The Paper I formula behaves as eta-1 ~ r in deep-MOND, which
+   corresponds to source ~ a0/r (or g_obs/r times a constant).
+   This is a *long-range* source not produced by any pointwise
+   product of g_N, mu, rho_b, a0, c.  A purely local closure of
+   the form S = F(g_N, mu, a0)/c^n therefore CANNOT reproduce
+   the Paper I deep-MOND scaling.
+
+   Possible resolutions for Paper III (none endorsed by this test):
+   (i)  The slip relation comes from an integral kernel, not a
+        local Poisson equation - i.e. (Psi-Phi)(r) is a Green's
+        function CONVOLUTION over rho_b, not a Laplacian inverse.
+   (ii) The field equation contains a non-local operator
+        (e.g. AeST disformal sector) whose linearization is
+        not nabla^2 but a more complicated kernel.
+   (iii) Paper I's eta-1 formula is a phenomenological ansatz
+        constrained by lensing/MOND consistency, not a Green-
+        function-derivable expression.  The Paper II caveat
+        already concedes this - it should be the operative
+        position for the published series.
