@@ -1,0 +1,49 @@
+Paper III - Direct scalar-field integration: DGSAT-I
+================================================================
+
+CONVENTIONS
+  Spherical AQUAL: r^2 mu(g/a0) theta' = G M(r)
+  with mu(x) = x/sqrt(1+x^2), nu(y) = sqrt(0.5+0.5*sqrt(1+4/y^2))
+  =>  theta'(r) = g_N(r) / [mu(g_obs/a0) * a0]   (dimensionless form)
+
+PROFILE
+  Plummer M = 3e8 Msun, r_eff = 2.1 kpc (DGSAT-I; Paper II Table I)
+  r_MOND = sqrt(GM/a0) = 0.590 kpc
+  epsilon = r_eff/r_MOND = 3.557
+
+TWO FORMS COMPARED
+  A (naive deep-MOND):   theta'_A = g_N / a0
+  B (exact spherical):   theta'_B = g_N / (mu * a0)
+  Ratio (A/B)^2 = mu^2(g_obs/a0).
+
+AGREEMENT REGIMES (DGSAT-I)
+  Worst |1 - mu^2| = 100.0 %  at r = 63.00 kpc
+  Median|1 - mu^2| = 99.2 %
+  10%-agreement band: NONE in [0.10, 63.00] kpc
+  (Note: for DGSAT-I, g_N << a0 everywhere, so mu << 1 throughout.
+   The naive form A SEVERELY UNDERESTIMATES theta' for extended deep-MOND profiles.)
+
+SAMPLE TABLE  (r in kpc)
+  r       y=g_N/a0    mu(g/a0)   theta'_A     theta'_B     A/B
+    0.63  2.090e-02  1.430e-01  2.090e-02  1.461e-01  1.430e-01
+    2.10  2.791e-02  1.638e-01  2.791e-02  1.704e-01  1.638e-01
+    6.26  7.576e-03  8.510e-02  7.576e-03  8.903e-02  8.510e-02
+   63.00  8.767e-05  8.333e-03  8.767e-05  1.052e-02  8.333e-03
+
+INTERPRETATION
+  In the deep-MOND regime g_N << a0, mu ~ g/a0 ~ sqrt(g_N/a0) << 1, so
+  theta'_B = g_N/(mu*a0) ~ sqrt(g_N/a0)  (matches the AQUAL solution).
+  But the naive form theta'_A = g_N/a0 = y << 1 is QUADRATICALLY smaller.
+
+  Therefore (theta'_A)^2 = y^2 vs (theta'_B)^2 = y
+  -> They differ by a factor y everywhere in deep-MOND.
+  -> They agree only when y >> 1 (Newtonian regime), which DGSAT-I never
+     reaches: y(r_eff) = 2.79e-02.
+
+CONCLUSION FOR PAPER III
+  The identification (theta')^2 = g_N^2/a0^2 used in the eta_diagnosis
+  hypothesis (and implicitly in the source S of the literal Paper I
+  derivation) is the WRONG closure for extended deep-MOND systems.
+  The exact AQUAL gradient gives (theta')^2 = g_N/a0 in deep-MOND, i.e.
+  ONE power of (g_N/a0), not two.  This is the structural fix that any
+  extended-source derivation of the slip must respect.

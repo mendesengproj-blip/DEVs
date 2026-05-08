@@ -1,0 +1,85 @@
+Paper III - Task 2: Point-mass test of Hypothesis H1
+================================================================
+HYPOTHESIS H1 (proposed):
+  nabla^2 (Psi - Phi) = (16 pi / 3) * beta * G * rho_b(r) * g_N(r) / a0
+
+CONSTANTS (galactic units)
+  G  = 4.302e-3   kpc (km/s)^2 / Msun
+  a0 = 3.702e+03  (km/s)^2 / kpc   [= 1.2e-10 m/s^2 converted to galactic]
+       NOTE: the value "3.857e-11 (km/s)^2/kpc" in the task brief is a unit
+       conversion error.  The correct conversion gives ~3700 (km/s)^2/kpc.
+  beta = 0.0075
+
+DIMENSIONAL CHECK
+  [G * rho_b * g_N / a0]
+    = kpc*(km/s)^2/Msun * Msun/kpc^3 * (km/s)^2/kpc / ((km/s)^2/kpc)
+    = (km/s)^2 / kpc^2
+  = [Laplacian(Psi)]                                 PASSES.
+
+SETUP
+  Quasi-point Plummer: M = 1e10 Msun, r_eff = 0.01 kpc
+  r_MOND = sqrt(G M / a0) = 107.8 kpc
+  Grid: 3000 log points r in [1e-3, 2e3] kpc
+  FD solve of (1/r^2)(r^2 X')' = S, BC X(r_max)=0, regular at 0,
+  with u = r*X, u(0)=u(r_max)=0.
+
+DEEP-MOND WINDOW  r in [2*r_MOND, 1500] kpc
+  max  |residual| = 5.6e+8  %
+  median|residual| = 1.1e+8  %
+  eta_H1 sign is NEGATIVE; magnitude is O(10^5);
+  Paper I analytic eta-1 is O(10^-3) and POSITIVE.
+
+VERDICT
+  H1 REJECTED.
+
+  Quantitatively, H1 disagrees with Paper I by 8-13 orders of magnitude
+  AND with the wrong sign throughout the deep-MOND window.  This is
+  consistent with the residual reported in
+  code/verification/eta_diagnosis_report.txt, Task 4 (Plummer near-pointlike,
+  residual 178%), where the same source family was tested with a slightly
+  different prefactor.
+
+PHYSICAL DIAGNOSIS
+  For a strongly centrally concentrated Plummer (r_eff -> 0), the source
+  S_H1 is sharply peaked at the origin with NO long-range tail, because
+  rho_b(r) decays as r^-5 for r >> r_eff while g_N decays only as r^-2.
+  The Green-function solution outside the support is therefore
+  (Psi-Phi)(r) ~ -Q/r with Q = (1/4 pi) * integral S_H1 d^3 r.
+  This produces eta-1 ~ 1/r, which CANNOT match the Paper I deep-MOND
+  prediction eta-1 ~ (2/3) beta * sqrt(a0/g_N) ~ r (linearly growing).
+  The two functional forms are structurally incompatible.
+
+CONCLUSION
+  H1 (in the form given in this task) is NOT the correct extended-source
+  generalization of the Paper I slip formula.  It does not reduce to the
+  point-source result even qualitatively.  Per the task instruction
+  ("se H1 falhar no teste pontual, PARE imediatamente"), Tasks 3-6 are
+  NOT executed.
+
+WHAT THIS MEANS FOR THE DEV PROGRAM
+  1. The dimensional inconsistency flagged in eta_diagnosis_report.txt
+     is real and the candidate "H1" closure proposed by that diagnostic
+     is not the resolution.
+  2. The Paper I formula remains a valid Green-function result for a
+     true delta-source in the deep-MOND limit; its extension to finite
+     profiles requires a different ansatz than H1.
+  3. Possible directions:
+     (a) Derive (theta')^2 from the scalar field equation
+         div[mu(g/a0) grad theta] = 4 pi G rho_b directly, without any
+         postulated factorization.  This gives (theta')^2 = (M(r)/(r^2*mu))^2
+         in spherical symmetry, which is NOT proportional to G*rho_b*g_N/a0.
+     (b) Treat the slip formula as an interpolation ansatz (the Paper II
+         caveat) and use the AeST/TeVeS-style direct integration of the
+         disformal stress, retaining the validity-regime table from
+         Paper II as the operative observational guidance.
+  4. The DGSAT-I prediction (eta-1 ~ 9.9% from Paper I) should continue
+     to be reported with the Paper II caveat.  No quantitative correction
+     is justified by H1.
+
+RECOMMENDED NEXT STEP
+  Do NOT package this as a Paper III result.  The honest write-up is:
+  "We tested the natural dimensional closure S = const * G rho_b g_N / a0
+   numerically against the Paper I analytic formula in the strict
+   point-mass limit.  It fails by ~8 orders of magnitude with opposite
+   sign.  The extended-source derivation therefore requires a treatment
+   that does not factor the source through rho_b * g_N, and is deferred."
