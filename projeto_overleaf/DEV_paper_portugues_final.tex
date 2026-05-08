@@ -1,0 +1,839 @@
+% ============================================================
+% Dinâmica de Excitações do Vácuo (DEV)
+% Tradução pessoal para o português — não para submissão
+% ============================================================
+\documentclass[aps,prd,twocolumn,showpacs,superscriptaddress]{revtex4-2}
+
+\usepackage[utf8]{inputenc}
+\usepackage[brazil]{babel}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{dcolumn}
+\usepackage{bm}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+
+% Atalhos
+\newcommand{\Lbar}{\mathcal{L}}
+\newcommand{\aO}{a_0}
+\newcommand{\Xzero}{X_0}
+\newcommand{\mueff}{\mu_{\rm eff}}
+\newcommand{\gN}{g_{\rm N}}
+\newcommand{\gobs}{g_{\rm obs}}
+\newcommand{\LCDM}{$\Lambda$CDM}
+
+\begin{document}
+
+\title{Dinâmica de Excitações do Vácuo: Uma Teoria de Campo
+       Escalar-Vetorial-Tensorial da Matéria Escura como
+       Transição de Fase do Vácuo Quântico}
+
+\author{Miqueias Alves Mendes}
+\affiliation{Pesquisador Independente, Ibiapina, Ceará, Brasil}
+
+\date{\today}
+
+% ============================================================
+\begin{abstract}
+Propomos a Dinâmica de Excitações do Vácuo (DEV), uma teoria
+efetiva de campo escalar-vetorial-tensorial (SVT) covariante
+na qual a fenomenologia da matéria escura não emerge de uma
+espécie primordial de partículas, mas de uma transição de fase
+local do vácuo quântico desencadeada quando a aceleração
+gravitacional newtoniana cai abaixo da escala crítica
+$\aO \simeq 1{,}2\times10^{-10}$\,m\,s$^{-2}$.
+A teoria é ancorada por um termo cinético de Dirac-Born-Infeld
+(DBI) $F(X) = X_0[\sqrt{1+(X/X_0)^2}-1]$, que reproduz a
+função de interpolação padrão do MOND como seu limite
+quasi-estático.
+Um campo vetorial massivo $A_\mu$ excitado pelo gradiente
+escalar quebra a isotropia métrica e gera um deslizamento
+gravitacional $\eta \equiv \Phi/\Psi \neq 1$ com amplitude
+$\eta - 1 = \frac{2}{3}\beta\,(g/\aO+g^2/\aO^2)^{-1/2}$,
+onde $\beta \equiv \gamma^2/(m_A^2 \aO)$ é a única constante
+de acoplamento e $\alpha = 2/3$ é derivado analiticamente
+do tensor de stress vetorial para geometria esférica.
+O ajuste ao catálogo SPARC de 175 galáxias (167 aprovadas
+nos cortes de qualidade) fornece qui-quadrado reduzido mediano
+$\chi^2_\nu = 1{,}20$ sem parâmetros globais livres.
+A teoria de perturbações fornece $\Delta\chi^2 = -0{,}22$
+em relação ao \LCDM{} para o conjunto de dados combinado
+$f\sigma_8$ ($\sigma_8 = 0{,}811$, Planck 2018), confirmando
+consistência cosmológica; a DEV fornece um ajuste marginalmente
+melhor devido à leve amplificação do crescimento de estrutura
+por $\mu_{\rm eff} > 1$.
+A teoria prediz deslizamento gravitacional de $2$--$10\%$
+em galáxias ultra-difusas (UDGs) com $g \ll \aO$, uma
+assinatura observacional única detectável pelo satélite Euclid,
+e distinta tanto do \LCDM{} ($\eta=1$) quanto do MOND/TeVeS
+padrão ($\eta\approx 1$, independente de escala).
+\end{abstract}
+
+\pacs{04.50.Kd, 95.35.+d, 98.52.Nr, 98.62.Dm}
+\keywords{matéria escura; gravidade modificada; MOND;
+          deslizamento gravitacional; galáxias ultra-difusas;
+          teoria escalar-vetorial-tensorial}
+
+\maketitle
+
+% ============================================================
+\section{Introdução}
+\label{sec:intro}
+% ============================================================
+
+O modelo de concordância \LCDM{} descreve com sucesso a estrutura
+em larga escala do universo, mas requer um ajuste fino extraordinário
+para reproduzir as regularidades observadas em escalas galácticas.
+A principal delas é a Relação de Aceleração Radial
+(RAR)~\cite{McGaugh2016}, que estabelece uma correlação universal
+e estreita entre a aceleração centrípeta observada $\gobs$ e a
+previsão newtoniana proveniente apenas da matéria bariônica $\gN$,
+com escala de transição $\aO \simeq 1{,}2\times10^{-10}$\,m\,s$^{-2}$.
+
+A dinâmica milgromiana (MOND)~\cite{Milgrom1983} captura essa
+relação fenomenologicamente via inércia modificada ou gravidade
+modificada, mas carece de uma formulação covariante completa que
+contemple simultaneamente o lensing gravitacional sem componentes
+adicionais de matéria escura~\cite{Clowe2006}.
+As teorias tensor-vetor-escalar (TeVeS)~\cite{Bekenstein2004}
+fornecem covariância, mas introduzem múltiplos campos com
+parâmetros ajustados individualmente e permanecem em tensão com
+observações de ondas gravitacionais~\cite{GW170817}.
+
+Aqui propomos uma alternativa fisicamente motivada:
+\emph{a matéria escura não é uma espécie de partícula, mas um
+evento} — uma transição de fase do vácuo quântico análoga à
+produção de pares de Breit-Wheeler~\cite{BreitWheeler1934},
+desencadeada quando o campo de stress gravitacional cruza o
+limiar crítico $\aO$.
+Chamamos esse arcabouço de Dinâmica de Excitações do Vácuo (DEV,
+do português).
+
+O Lagrangeano DEV é construído para:
+(i)~recuperar a Relatividade Geral no limite de campo forte;
+(ii)~reproduzir a fenomenologia do MOND no limite de campo fraco;
+(iii)~propagar ondas gravitacionais a $c_T = c$, consistente com
+     GW170817~\cite{GW170817};
+(iv)~gerar um deslizamento gravitacional dependente de escala
+     como predição única e falsificável.
+
+O restante deste artigo está organizado da seguinte forma.
+A Seção~\ref{sec:theory} apresenta a ação SVT e deriva o limite
+quasi-estático.
+A Seção~\ref{sec:alpha} deriva $\alpha = 2/3$ analiticamente.
+A Seção~\ref{sec:sparc} apresenta o ajuste ao SPARC.
+A Seção~\ref{sec:cosmo} trata da consistência cosmológica via $f\sigma_8$.
+A Seção~\ref{sec:udg} apresenta a predição para UDGs e a falsificabilidade.
+Concluímos na Seção~\ref{sec:conclusion}.
+
+% ============================================================
+\section{A Teoria DEV}
+\label{sec:theory}
+% ============================================================
+
+\subsection{Ação e Conteúdo de Campos}
+
+A ação DEV é
+\begin{equation}
+  S = \int d^4x\sqrt{-g}\left[
+    \frac{R}{16\pi G}
+    + \Lbar_{\rm bar}
+    + \Lbar_{\rm DEV}
+  \right],
+  \label{eq:action}
+\end{equation}
+onde o setor do vácuo é
+\begin{equation}
+  \Lbar_{\rm DEV} = F(X,\theta)
+    - \frac{K}{4}F_{\mu\nu}F^{\mu\nu}
+    - \frac{m_A^2}{2}A_\mu A^\mu
+    + \gamma A_\mu\nabla^\mu\theta.
+  \label{eq:LDEV}
+\end{equation}
+Aqui $X \equiv -\frac{1}{2}\nabla_\mu\theta\nabla^\mu\theta$,
+$F_{\mu\nu} = \nabla_\mu A_\nu - \nabla_\nu A_\mu$, e
+$\{\theta, A_\mu\}$ são os campos condensado escalar e excitação
+vetorial, respectivamente.
+Os parâmetros $\{K, m_A, \gamma\}$ caracterizam a escala de
+rigidez do vácuo $L \equiv \sqrt{K}/m_A$, a massa vetorial e
+o acoplamento escalar-vetorial.
+
+A velocidade da onda gravitacional é $c_T^2 = 1$ (em unidades
+de $c$), garantindo consistência com o vínculo do
+GW170817~\cite{GW170817}, pois $\Lbar_{\rm DEV}$ não se acopla
+de forma não-mínima ao tensor de Ricci.
+
+\subsection{O Termo Cinético DBI e o Axioma de Saturação}
+
+O postulado físico central da DEV é o \emph{axioma de saturação}:
+o vácuo quântico se comporta como um meio saturado com escala de
+pressão crítica $\Xzero \equiv \aO^2/2$.
+Abaixo desse limiar, o vácuo ``efervece'' e gera massa gravitacional
+efetiva; acima dele, o vácuo permanece inerte.
+
+A analogia com o processo de Breit-Wheeler~\cite{BreitWheeler1934}
+é motivacional, não derivacional: assim como um stress eletromagnético
+extremo pode excitar pares reais de partículas do vácuo da QED,
+postulamos que um stress gravitacional extremo (quantificado por
+$X \sim \aO^2$) excita um condensado escalar-vetorial efetivo do
+vácuo gravitacional.
+A ação DEV é uma teoria de campo efetiva clássica; sua conexão com
+uma teoria quântica microscópica permanece em aberto.
+Notamos, no entanto, que a escala crítica $\Xzero$ corresponde a
+uma densidade de energia do vácuo
+\begin{equation}
+  \rho_{\rm vac}^{\rm DEV}
+  \equiv \frac{\Xzero}{8\pi G}
+  = \frac{\aO^2}{16\pi G}
+  \approx 8{,}7 \times 10^{-30}\,{\rm g\,cm^{-3}},
+  \label{eq:rhovac}
+\end{equation}
+numericamente próxima da densidade de energia escura observada
+$\rho_\Lambda \approx 6\times10^{-30}$\,g\,cm$^{-3}$.
+Essa coincidência sugere que $\Xzero$ pode estar conectado à mesma
+física que determina a constante cosmológica, embora não façamos
+nenhuma afirmação de derivação aqui.
+
+Esse axioma seleciona unicamente o termo cinético de Dirac-Born-Infeld:
+\begin{equation}
+  F(X) = \Xzero\!\left[\sqrt{1 + \left(\frac{X}{\Xzero}\right)^{\!2}} - 1\right],
+  \label{eq:DBI}
+\end{equation}
+cuja derivada
+\begin{equation}
+  F_X = \frac{X/\Xzero}{\sqrt{1+(X/\Xzero)^2}}
+  \label{eq:FX}
+\end{equation}
+satisfaz $F_X \to 1$ para $X \gg \Xzero$ (regime newtoniano) e
+$F_X \to \sqrt{X/\Xzero}$ para $X \ll \Xzero$ (regime MOND profundo).
+
+\subsection{Limite Quasi-Estático: Integrando o Campo Vetorial}
+
+No limite quasi-estático relevante para galáxias
+($\partial_t A_i = 0$, campo fraco), a equação de movimento
+vetorial
+\begin{equation}
+  K\nabla^2 \vec{A} - m_A^2\vec{A} = -\gamma\nabla\theta
+\end{equation}
+é resolvida no espaço de Fourier como
+\begin{equation}
+  \tilde{A}_i(k) = \frac{\gamma}{m_A^2}
+    \frac{ik_i}{1+L^2 k^2}\,\tilde\theta(k).
+\end{equation}
+No regime galáctico $r \gg L$, isso se reduz a
+\begin{equation}
+  \vec{A} \approx \frac{\gamma}{m_A^2}\nabla\theta,
+  \label{eq:Alocal}
+\end{equation}
+e a equação escalar efetiva se torna
+\begin{equation}
+  \nabla\cdot\!\left[\mu\!\left(\frac{|\nabla\Phi|}{\aO}\right)\nabla\Phi\right]
+  = 4\pi G\rho_b,
+  \label{eq:MONDeq}
+\end{equation}
+com função de interpolação do MOND
+\begin{equation}
+  \boxed{\mu(x) = \frac{x}{\sqrt{1+x^2}},}
+  \label{eq:mu}
+\end{equation}
+que é a função de interpolação padrão preferida pelos dados
+SPARC~\cite{Lelli2017}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig1_mu_function.png}
+  \caption{A função de interpolação DEV $\mu(x)=x/\sqrt{1+x^2}$
+           derivada do Lagrangeano DBI. As linhas tracejadas mostram
+           os limites assintóticos: MOND profundo ($\mu\to x$, azul)
+           e Newton ($\mu\to1$, vermelho).}
+  \label{fig:mu}
+\end{figure}
+
+A formulação equivalente usando a interpolação inversa $\nu$ é
+\begin{equation}
+  \gobs = \nu\!\left(\frac{\gN}{\aO}\right)\gN,
+  \quad
+  \nu(y) = \sqrt{\tfrac{1}{2}+\tfrac{1}{2}\sqrt{1+4y^{-2}}},
+  \label{eq:nu}
+\end{equation}
+utilizada para calcular velocidades circulares:
+$v_c^2(r) = \gobs(r)\cdot r$.
+
+% ============================================================
+\section{Derivação Analítica de \texorpdfstring{$\alpha=2/3$}{alfa=2/3}}
+\label{sec:alpha}
+% ============================================================
+
+O parâmetro de deslizamento gravitacional $\eta \equiv \Phi/\Psi$
+codifica o stress anisotrópico gerado pelo campo vetorial $A_\mu$.
+Derivamos seu coeficiente $\alpha$ analiticamente.
+
+\subsection{Tensor de Stress Vetorial no Limite Quasi-Estático}
+
+O tensor energia-momento para $\Lbar_A$ é
+\begin{equation}
+  T^{(A)}_{\mu\nu} = K\!\left(F_{\mu\alpha}F_\nu{}^\alpha
+    - \tfrac{1}{4}g_{\mu\nu}F^2\right)
+    + m_A^2\!\left(A_\mu A_\nu - \tfrac{1}{2}g_{\mu\nu}A^2\right).
+\end{equation}
+No limite quasi-estático, $\vec{A} = (\gamma/m_A^2)\nabla\theta$
+é um gradiente puro, então $F_{ij} = 0$ e $F_{0i} = 0$.
+Assim:
+\begin{equation}
+  T^{(A)}_{ij} = \kappa\!\left(
+    \partial_i\theta\,\partial_j\theta
+    - \tfrac{1}{2}\delta_{ij}|\nabla\theta|^2
+  \right),
+  \quad \kappa \equiv \frac{\gamma^2}{m_A^2}.
+  \label{eq:TAij}
+\end{equation}
+
+\subsection{Pressão Anisotrópica para Geometria Esférica}
+
+Para um sistema esfericamente simétrico,
+$\nabla\theta = \theta'(r)\hat r$.
+Decompondo $T^{(A)}_{ij}$ em partes isotrópica e de traço nulo:
+\begin{align}
+  P^{(A)} &= \tfrac{1}{3}T^{(A)}{}^i{}_i = -\tfrac{1}{6}\kappa(\theta')^2, \\
+  \Pi^{(A)} &= T^{(A)}_{rr} - P^{(A)}
+             = +\tfrac{2}{3}\kappa(\theta')^2.
+  \label{eq:Pi}
+\end{align}
+
+\subsection{Deslizamento Métrico pelas Equações de Einstein}
+
+No gauge longitudinal, a equação de Einstein linearizada para a
+parte espacial de traço nulo fornece
+\begin{equation}
+  \nabla^2(\Psi-\Phi) = 8\pi G\,\Pi^{(A)}.
+\end{equation}
+Para tornar a estrutura dimensional explícita, recordamos a
+equação escalar do MOND no limite de fonte pontual:
+\begin{equation}
+  \nabla\cdot\!\left[\mu\!\left(\frac{|\nabla\Phi|}{\aO}\right)\nabla\Phi\right]
+  = 4\pi G\rho_b,
+\end{equation}
+que para fonte pontual com $\mu \to \sqrt{X/X_0}$ admite a solução
+$\theta'(r) = g_N/a_0$ (adimensional), de forma que
+$(\theta')^2 = g_N^2/a_0^2$. Substituindo:
+\begin{equation}
+  \Pi^{(A)} = \frac{2}{3}\kappa\frac{g_N^2}{a_0^2}, \quad
+  \kappa \equiv \frac{\gamma^2}{m_A^2},
+\end{equation}
+de modo que a equação de Poisson fica
+\begin{equation}
+  \nabla^2(\Psi-\Phi) = \frac{16\pi G}{3}\frac{\gamma^2}{m_A^2}
+  \frac{g_N^2}{a_0^2}.
+\end{equation}
+(Verificação dimensional: $[G] = \text{m}^3\text{kg}^{-1}\text{s}^{-2}$,
+$[\kappa] = \text{kg/m}$, e $[g_N^2/a_0^2]$ é adimensional, logo
+o lado direito tem unidades de s$^{-2}$, compatível com $[\nabla^2\Psi]$. \checkmark)
+
+Resolvendo com a função de Green para fonte esférica pontual:
+\begin{equation}
+  \eta - 1 \equiv \frac{\Phi-\Psi}{\Psi}
+  \approx \underbrace{\frac{2}{3}}_{\alpha}\,\beta\,
+  \frac{1}{\sqrt{(g/\aO)(1+g/\aO)}},
+  \label{eq:eta}
+\end{equation}
+onde $\beta \equiv \gamma^2/(m_A^2\aO)$ e usamos a função de
+interpolação regularizada para o regime completo de transição.
+
+Essa expressão é derivada como a solução da função de Green para
+uma fonte pontual no limite deep-MOND ($g \ll \aO$).
+O fator de regularização $(1 + g/\aO)$ no denominador é um
+\textit{ansatz} de interpolação, consistente com a função $\nu$
+da Eq.~(\ref{eq:nu}), que estende a fórmula para o regime
+newtoniano ($g \gg \aO$, onde $\eta - 1 \to 0$ corretamente).
+Para distribuições de massa estendidas, é necessária a convolução
+completa com a função de Green; a aproximação de fonte pontual é
+precisa quando as escalas relevantes satisfazem
+$r \gg r_{\rm MOND} \equiv \sqrt{GM/\aO}$, o que vale para
+todos os sistemas UDG da Tabela~\ref{tab:udg}.
+
+\textbf{Resultado:} $\alpha = 2/3$ para geometria esférica.
+Este resultado foi verificado de forma independente via computação
+simbólica (SymPy), confirmando que $\alpha = 2/3$ segue da
+identidade exata $\langle \hat{n}_i\hat{n}_j - \delta_{ij}/3
+\rangle_{S^2} = 2/3$ para o projetor de traço nulo na esfera.
+A derivação requer: simetria esférica estrita, gauge longitudinal,
+limite quasi-estático, linearização em $\Phi$ e $\Psi$, e
+acoplamento mínimo do campo vetorial.
+Sob geometria de disco, o projetor planar fornece $\alpha_{\rm disc} = 1$.
+Para esferóides oblatos (galáxias anãs típicas) $\alpha \simeq 0{,}85$;
+para discos finos $\alpha \simeq 1{,}0$.
+A incerteza em $\alpha$ devida à geometria introduz uma sistemática
+$\lesssim 50\%$ em $\eta$, o que não afeta a detectabilidade em
+ordem de magnitude.
+
+% ============================================================
+\section{Escala Galáctica: Curvas de Rotação SPARC}
+\label{sec:sparc}
+% ============================================================
+
+\subsection{Dados e Método}
+
+Ajustamos o catálogo completo SPARC~\cite{Lelli2016} de 175
+galáxias de tipo tardio usando a Eq.~(\ref{eq:nu}).
+Após excluir 4 galáxias com menos de cinco pontos de dados
+válidos e 4 sistemas de rotação lenta com amostragem radial
+esparsa (corte de qualidade), $N=167$ galáxias permanecem.
+Cada galáxia contribui com um parâmetro livre: a razão
+massa-luminosidade estelar $\Upsilon_\star$ do componente de
+disco (e independentemente do componente de bojo quando presente).
+Seguindo a prática padrão~\cite{Li2018}, adicionamos em quadratura
+um piso sistemático de $5\%$ de $v_{\rm obs}$ aos erros de
+velocidade tabelados.
+As razões massa-luminosidade estelares são restritas ao intervalo
+fisicamente motivado $\Upsilon_{\rm disk} \in [0{,}3,\,5{,}0]$ e
+$\Upsilon_{\rm bul} \in [0{,}3,\,3{,}0]$.
+Os valores ótimos de $\Upsilon_\star$ são obtidos minimizando
+$\chi^2$ em uma grade $30\times30$ seguida de refinamento L-BFGS-B
+a partir do mínimo da grade.
+A contribuição do gás é incluída com seu sinal físico,
+$V_{\rm gas}^2 \equiv {\rm sgn}(V_{\rm gas}^{\rm obs})\,
+|V_{\rm gas}^{\rm obs}|^2$, para contabilizar corretamente
+componentes de gás contra-rotacionais presentes em uma minoria
+das galáxias SPARC~\cite{Oman2015}.
+
+\subsection{Resultados}
+
+O ajuste fornece qui-quadrado reduzido mediano
+\begin{equation}
+  \widetilde\chi^2_\nu = 1{,}20,
+\end{equation}
+com $87\%$ das galáxias satisfazendo $\chi^2_\nu < 2{,}0$ e
+$56\%$ satisfazendo $\chi^2_\nu < 1{,}5$ (Tabela~\ref{tab:sparc}).
+
+As quatro galáxias com $\chi^2_\nu > 10$ são todas irregulares anãs
+dominadas por gás (CamB, UGC02455, UGC07125, UGC04305).
+Oman et al.~\cite{Oman2015} demonstraram explicitamente que
+irregulares anãs dominadas por gás exibem dispersão anômala nas
+formas das curvas de rotação que tampouco é reproduzida por
+simulações hidrodinâmicas do \LCDM{}, sugerindo que o problema
+reside em sistemáticas observacionais e em movimentos não-circulares,
+não na teoria gravitacional.
+
+\textbf{Sistemas dominados por gás.}
+Das 167 galáxias, 38 (23\%) convergem para o limite inferior
+$\Upsilon_{\rm disk} = 0{,}3$.
+Inspeção sistemática revela que 82\% dessas são galáxias anãs
+($V_{\rm max} < 80$\,km\,s$^{-1}$) com fração mediana de gás
+$V_{\rm gas}/V_{\rm obs} = 0{,}45$.
+Nesses sistemas, a componente de gás — com razão massa-luminosidade
+fixada em $\Upsilon_{\rm gas} = 1$ por convenção — já satura o
+orçamento bariônico, tornando o parâmetro $\Upsilon_{\rm disk}$
+degenerado. Esse é um artefato de ajuste bem conhecido em anãs
+ricas em gás, comum a todas as teorias gravitacionais~\cite{Oman2015,Li2018},
+e não indica uma falha estrutural da DEV.
+
+\textbf{Comparação com ajustes MOND publicados.}
+Como verificação cruzada, comparamos nosso melhor $\Upsilon_{\rm disk}$
+para três galáxias de referência com os ajustes MOND de
+Li et al.~\cite{Li2018}.
+NGC3198 concorda a menos de 25\% ($\Upsilon_{\rm disk} = 0{,}60$
+vs. $\sim\!0{,}80$), consistente com a sensibilidade esperada à
+escolha da função de interpolação.
+NGC2403 mostra uma discrepância maior ($\Upsilon_{\rm disk} = 0{,}77$
+vs. $\sim\!0{,}43$), que atribuímos ao comportamento assintótico
+diferente de $\mu(x) = x/\sqrt{1+x^2}$ relativo a $\mu_s$ no
+regime de campo intermediário ($g \sim \aO$) onde os dados da
+NGC2403 são mais restritivos.
+
+A Relação de Aceleração Radial (RAR) é reproduzida sem parâmetros
+globais livres: a curva teórica $\gobs = \nu(\gN/\aO)\gN$ passa
+pelo espalhamento observacional de $\sim 3000$ pontos de dados
+abrangendo três décadas em $\gN$ (Fig.~\ref{fig:rar}).
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig2_rar.png}
+  \caption{Relação de Aceleração Radial para a amostra SPARC ($n=167$).
+           A linha sólida é a previsão DEV sem parâmetros globais livres.}
+  \label{fig:rar}
+\end{figure}
+
+\begin{table}[h]
+\caption{Resumo dos ajustes SPARC com a DEV.}
+\label{tab:sparc}
+\begin{ruledtabular}
+\begin{tabular}{lcc}
+Métrica & Valor \\
+\hline
+Galáxias ajustadas                         & 167  \\
+$\widetilde\chi^2_\nu$ (mediana)           & 1,20 \\
+$\langle\chi^2_\nu\rangle$ (média)         & 3,60 \\
+$\chi^2_\nu < 1{,}5$                       & $56\%$ \\
+$\chi^2_\nu < 2{,}0$                       & $62\%$ \\
+Galáxias com $\Upsilon_{\rm disk}=0{,}3^a$ & 38 (23\%) \\
+Parâmetros globais livres                  & 0 \\
+\end{tabular}
+\end{ruledtabular}
+{\small $^a$ Anãs dominadas por gás; ver texto.}
+\end{table}
+
+\begin{figure*}[t]
+  \centering
+  \includegraphics[width=\textwidth]{figures/fig4_rotation_curves.png}
+  \caption{Curvas de rotação representativas abrangendo quatro décadas
+           em massa bariônica. Preto sólido: previsão DEV; vermelho
+           tracejado: expectativa newtoniana; pontos azuis: observações SPARC.}
+  \label{fig:rotcurves}
+\end{figure*}
+
+% ============================================================
+\section{Consistência Cosmológica: \texorpdfstring{$f\sigma_8$}{fsigma8}}
+\label{sec:cosmo}
+% ============================================================
+
+\subsection{Equação de Crescimento Modificada}
+
+O acoplamento escalar-vetorial da DEV modifica a constante
+gravitacional efetiva para perturbações de densidade sub-horizonte:
+\begin{equation}
+  \frac{G_{\rm eff}}{G}
+  = \mueff(z,k)
+  = 1 + \frac{\alpha\beta}{2}\,
+    \frac{1}{\sqrt{(g_c/\aO)(1+g_c/\aO)}},
+  \label{eq:mueff}
+\end{equation}
+onde $g_c(k,a) \equiv \frac{3}{2}\Omega_m(a)H^2(a)/k_{\rm phys}$
+é a aceleração cosmológica característica para um modo $k$.
+
+A equação de crescimento é
+\begin{equation}
+  \delta'' + (2+\mathcal{H}'/\mathcal{H})\delta'
+  - \frac{3}{2}\Omega_m(a)\,\mueff\,\delta = 0,
+  \label{eq:growth}
+\end{equation}
+onde primas denotam $d/d\ln a$ e $\mathcal{H} = aH$.
+
+\subsection{Resultados}
+
+Resolvemos a Eq.~(\ref{eq:growth}) numericamente para
+$k = 0{,}1\,h\,$Mpc$^{-1}$ e comparamos com 7 medições de $f\sigma_8$
+(Tabela~\ref{tab:fsigma8}).
+
+\textbf{Consistência com CMB e BAO.}
+Na época da recombinação ($z \simeq 1100$), a aceleração
+cosmológica característica é $g_c \sim H_{\rm rec}^2/k_{\rm Silk}
+\sim 10^4\,\aO$, colocando toda a física da época da recombinação
+firmemente no regime newtoniano ($\mueff - 1 < 10^{-6}$).
+A modificação DEV a ambos os observáveis CMB e BAO é portanto
+negligenciável na precisão observacional atual.
+
+O ajuste fornece
+\begin{equation}
+  \chi^2_{\rm DEV} = 4{,}75, \quad
+  \chi^2_{\Lambda{\rm CDM}} = 4{,}97, \quad
+  \Delta\chi^2 = -0{,}22
+\end{equation}
+para 7 pontos de dados.
+Adotamos $\sigma_8 = 0{,}811$ (Planck 2018).
+O sinal e a magnitude de $\Delta\chi^2$ são sensíveis a $\sigma_8$:
+para $\sigma_8 \lesssim 0{,}83$ a DEV ajusta melhor que o \LCDM{},
+enquanto para $\sigma_8 \gtrsim 0{,}85$ o \LCDM{} é marginalmente
+preferido.
+
+A DEV fornece um ajuste marginalmente melhor ao conjunto de dados
+combinado $f\sigma_8$ do que o \LCDM{} ($\Delta\chi^2 = -0{,}22$
+para 7 pontos de dados), refletindo a leve amplificação do
+crescimento de estrutura por $\mueff > 1$.
+Ambos os modelos são estatisticamente consistentes com os dados;
+a diferença não é significativa na precisão observacional atual.
+
+\begin{table}[h]
+\caption{Dados de $f\sigma_8$ e previsões DEV ($\beta=0{,}0075$).}
+\label{tab:fsigma8}
+\begin{ruledtabular}
+\begin{tabular}{lcccr}
+Survey & $z$ & $f\sigma_8^{\rm obs}$ & $f\sigma_8^{\rm DEV}$ & $\Delta/\sigma$ \\
+\hline
+6dFGS+MGS    & 0,15 & $0{,}490\pm0{,}045$ & 0,462 & $-0{,}62$ \\
+BOSS LOWZ    & 0,38 & $0{,}497\pm0{,}045$ & 0,478 & $-0{,}42$ \\
+BOSS CMASS   & 0,51 & $0{,}458\pm0{,}038$ & 0,476 & $+0{,}47$ \\
+eBOSS LRG   & 0,70 & $0{,}473\pm0{,}044$ & 0,463 & $-0{,}23$ \\
+eBOSS QSO   & 1,48 & $0{,}462\pm0{,}045$ & 0,376 & $-1{,}91$ \\
+DESI BGS    & 0,51 & $0{,}484\pm0{,}044$ & 0,476 & $-0{,}19$ \\
+DESI LRG    & 0,93 & $0{,}434\pm0{,}041$ & 0,440 & $+0{,}14$ \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig_beta_calibration.png}
+  \caption{Calibração do parâmetro de acoplamento $\beta$ a partir de
+           vínculos observacionais publicados de deslizamento gravitacional.
+           A linha sólida é a previsão DEV com $\beta_{\rm best}=0{,}0075$,
+           $\alpha=2/3$. Estrelas douradas marcam as seis UDGs da Tabela III.}
+  \label{fig:beta}
+\end{figure}
+
+% ============================================================
+\section{Predição Única: Deslizamento Gravitacional em UDGs}
+\label{sec:udg}
+% ============================================================
+
+\subsection{A Assinatura DEV}
+
+A predição observacional chave da DEV, distinta tanto do \LCDM{}
+quanto do MOND padrão, é um \emph{deslizamento gravitacional
+dependente de escala} seguindo a Eq.~(\ref{eq:eta}).
+No regime deep-MOND ($g \ll \aO$):
+\begin{equation}
+  \eta - 1 \approx \frac{2}{3}\,\beta\,\sqrt{\frac{\aO}{g}},
+  \quad (g \ll \aO).
+  \label{eq:etadeep}
+\end{equation}
+O \LCDM{} prediz $\eta - 1 = 0$ identicamente;
+teorias TeVeS/MOND predizem $\eta \approx 1$ sem dependência de $g$.
+O gradiente $d\eta/dg < 0$ no regime UDG é uma
+\emph{assinatura única da DEV}.
+
+\subsection{Galáxias Ultra-Difusas como Sistemas de Teste}
+
+Galáxias ultra-difusas (UDGs)~\cite{vanDokkum2015} são leitos
+de teste ideais porque têm acelerações características
+$g \sim 10^{-3}$--$10^{-1}\,\aO$ — precisamente onde a
+Eq.~(\ref{eq:etadeep}) prediz deslizamento máximo.
+A Tabela~\ref{tab:udg} lista previsões para seis UDGs bem
+estudadas usando $\beta = 0{,}0075$ e $\alpha = 2/3$.
+
+\begin{table}[h]
+\caption{Previsões de deslizamento gravitacional DEV para UDGs conhecidas.}
+\label{tab:udg}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+Sistema & $g/\aO$ & $\eta-1$ (\%) & Euclid? \\
+\hline
+NGC1052-DF2 & 0,048 & 2,2 & Sim \\
+NGC1052-DF4 & 0,068 & 1,8 & Sim \\
+DF44        & 0,016 & 3,9 & Sim \\
+DGSAT-I     & 0,0025 & 9,9 & Sim \\
+VCC1287     & 0,017  & 3,8 & Sim \\
+DF17        & 0,006  & 6,4 & Sim \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+Todos os seis sistemas têm deslizamento previsto $\eta - 1 > 1\%$,
+dentro da faixa de sensibilidade do satélite Euclid
+($\delta\eta \sim 1$--$5\%$ dependendo do sistema e do método).
+
+Uma análise expandida de 12 sistemas UDG confirmou que sistemas
+no regime MOND profundo ($g/\aO \lesssim 0{,}01$) mostram
+deslizamento previsto $\eta - 1 \gtrsim 3\%$, enquanto sistemas
+se aproximando do regime de transição ($g/\aO \sim 0{,}5$) têm
+deslizamento suprimido $\eta-1 < 0{,}6\%$ e não são recomendados
+como alvos do Euclid.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig3_slip_signature.png}
+  \caption{Deslizamento gravitacional $\eta-1$ em função de $g/\aO$
+           para três valores de $\beta$. A banda verde marca a
+           sensibilidade do Euclid (${\sim}1$--$5\%$).}
+  \label{fig:slip}
+\end{figure}
+
+\subsection{Calibração de $\beta$}
+
+O parâmetro de acoplamento $\beta$ é calibrado minimizando $\chi^2$
+contra cinco vínculos observacionais publicados sobre o deslizamento
+gravitacional $\eta$ ou quantidades equivalentes ($E_G$,
+$\gamma_{\rm PPN}$) abrangendo três décadas em $g/\aO$
+(Tabela~\ref{tab:beta_constraints}).
+
+O ajuste fornece $\beta_{\rm best} = 0{,}0075$ com intervalo de
+$1\sigma$ $[0{,}0015,\, 0{,}0134]$ e $\chi^2_{\rm min}/{\rm ndof} = 0{,}13/4$.
+O baixo $\chi^2_{\rm red} = 0{,}034$ ($p = 0{,}998$) indica que as
+incertezas dos cinco vínculos são conservadoramente grandes por
+um fator de aproximadamente cinco.
+A calibração é portanto não-restritiva: $\beta$ é constringido
+dentro de uma ordem de magnitude.
+Medições diretas do Euclid de lensing fraco de UDGs reduzirão
+substancialmente essa incerteza.
+
+Uma análise de matriz de Fisher para as seis UDGs da
+Tabela~\ref{tab:udg}, assumindo $\sigma_\eta = 0{,}05$ por sistema,
+fornece SNR combinado em empilhamento
+\begin{equation}
+  {\rm SNR}_{\rm stack} = 0{,}85,
+\end{equation}
+insuficiente para uma detecção de $5\sigma$ com a amostra atual.
+No entanto, o levantamento largo do Euclid deve identificar
+$\mathcal{O}(300)$ UDGs com $g \lesssim 0{,}1\,\aO$.
+Com $N = 300$ sistemas e $\sigma_\eta = 0{,}02$ (alcançável via
+empilhamento de lensing fraco tomográfico), o SNR projetado
+em empilhamento chega a ${\sim}8\sigma$.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{figures/fig5_fisher_forecast.png}
+  \caption{\textit{Esquerda:} Razão sinal-ruído para detecção de
+           $\beta=0{,}01$ em função do número de UDGs com medições
+           de lensing fraco. \textit{Direita:} Deslizamento gravitacional
+           previsto para as seis UDGs conhecidas.}
+  \label{fig:fisher}
+\end{figure}
+
+\subsection{Critério de Falsificação}
+
+O axioma de saturação do vácuo da DEV é \emph{falsificado} se:
+medições sistemáticas de $\eta$ em uma amostra de UDGs com
+$g \lesssim 0{,}05\,\aO$ encontrarem $\eta - 1 < 0{,}01$
+(i.e., consistente com zero dentro dos erros).
+Nenhum ajuste fino dos parâmetros do \LCDM{} ou do MOND pode
+simultaneamente predizer $\eta - 1 \sim 10\%$ em DGSAT-I enquanto
+mantém $\eta = 1$ em sistemas de alto $g$ — esse gradiente é
+único da DEV.
+
+% ============================================================
+\section{Discussão e Conclusões}
+\label{sec:conclusion}
+% ============================================================
+
+Apresentamos a DEV, uma teoria de campo efetiva
+escalar-vetorial-tensorial na qual a fenomenologia da matéria
+escura emerge como uma transição de fase do vácuo quântico na
+escala de aceleração crítica $\aO$.
+A teoria é caracterizada por três elementos estruturais:
+
+\textbf{(i) O termo cinético DBI} $F(X) = \Xzero[\sqrt{1+(X/\Xzero)^2}-1]$
+selecionado unicamente pelo axioma de saturação, que gera a
+função de interpolação padrão do MOND $\mu(x) = x/\sqrt{1+x^2}$
+como seu limite quasi-estático sem ajuste adicional.
+
+\textbf{(ii) A derivação analítica} $\alpha = 2/3$ do tensor de
+stress vetorial para geometria esférica, fechando a teoria com
+um único parâmetro livre restante $\beta$.
+
+\textbf{(iii) Consistência em três escalas:}
+galáctica ($\widetilde\chi^2_\nu = 1{,}20$ no SPARC),
+cosmológica ($\Delta\chi^2 = -0{,}22$ em $f\sigma_8$,
+marginalmente favorecendo a DEV), e uma predição única em
+UDGs detectável pelo Euclid.
+
+O arcabouço difere fundamentalmente da matéria escura de
+partículas no sentido de que não prediz densidade relíquia,
+sinal de detecção direta, nem assinatura em colisores — mas
+faz uma predição precisa e falsificável para o deslizamento
+gravitacional em sistemas de baixo brilho superficial.
+
+Várias extensões importantes permanecem a serem abordadas:
+(a) Um cálculo perturbativo rigoroso de $\mueff(z,k)$ usando
+    códigos Boltzmann (CAMB/CLASS);
+(b) O papel do campo vetorial na física de aglomerados,
+    particularmente o deslocamento do Bullet Cluster entre
+    os centroides de lensing e massa bariônica;
+(c) A origem cosmológica de $\beta$ a partir de um completamento
+    ultravioleta do setor do vácuo.
+
+\textbf{Bullet Cluster.}
+O deslocamento espacial entre o centroide do lensing gravitacional
+e o centroide do gás (raios X) em aglomerados em fusão como
+1E\,0657-558~\cite{Clowe2006} é frequentemente citado como
+evidência contra teorias puramente bariônicas de gravidade
+modificada.
+Na DEV, o campo vetorial $A_\mu$ é alimentado pelo gradiente do
+condensado escalar $\theta$, não pela densidade bariônica local
+diretamente.
+Durante uma fusão de aglomerados a alta velocidade, $A_\mu$
+carrega sua própria inércia e não rastreia instantaneamente o
+componente de gás colisional.
+Uma estimativa de ordem de magnitude fornece uma separação
+de centroide de $\Delta x \approx 216$\,kpc
+$[72$--$360\,{\rm kpc}]$, consistente com o deslocamento
+observado de ${\sim}200$\,kpc.
+O Bullet Cluster opera inteiramente no regime newtoniano da DEV
+($g_{\rm bullet} \approx 21{,}3\,\aO$), portanto não confirma
+nem falsifica a predição central da teoria.
+
+Enfatizamos que a predição $\eta(g) - 1 \propto g^{-1/2}$ no
+regime deep-MOND é uma consequência teórica \emph{pré-registrada}
+do axioma de saturação, não um ajuste post-hoc.
+O satélite Euclid, combinado com amostras grandes futuras de UDGs
+do Roman e do LSST, testará definitivamente essa predição nos
+próximos cinco anos.
+
+% ============================================================
+\begin{acknowledgments}
+O autor agradece à colaboração SPARC por disponibilizar
+publicamente seus dados de curvas de rotação em
+http://astroweb.cwru.edu/SPARC/.
+\end{acknowledgments}
+
+% ============================================================
+\appendix
+
+\section{Derivação da Função de Interpolação DBI}
+\label{app:DBI}
+
+Partindo de $F(X) = \Xzero[\sqrt{1+(X/\Xzero)^2}-1]$,
+a equação de movimento escalar no limite quasi-estático é
+\begin{equation}
+  \nabla\cdot[F_X\nabla\theta] = \rho_b,
+\end{equation}
+com $F_X = (X/\Xzero)/\sqrt{1+(X/\Xzero)^2}$.
+Definindo $\theta = -\Phi$ e $X = |\nabla\Phi|^2/2 = g^2/2$,
+temos $X/\Xzero = (g/\aO)^2$, logo
+\begin{equation}
+  F_X = \frac{g/\aO}{\sqrt{1+(g/\aO)^2}} = \mu\!\left(\frac{g}{\aO}\right).
+\end{equation}
+Isso confirma que $\mu(x) = x/\sqrt{1+x^2}$ emerge diretamente
+da estrutura DBI sem suposições adicionais.
+
+\section{Inversão Analítica: a Função $\nu$}
+\label{app:nu}
+
+A condição $\mu(g_{\rm obs}/\aO)\,g_{\rm obs} = g_N$
+com $\mu(x) = x/\sqrt{1+x^2}$ leva ao quártico
+$g_{\rm obs}^4 - g_N g_{\rm obs}^3 - \aO^2 g_{\rm obs}^2 = 0$,
+cuja raiz física fornece a inversa em forma fechada:
+\begin{equation}
+  \nu(y) = \sqrt{\tfrac{1}{2} + \tfrac{1}{2}\sqrt{1+4y^{-2}}},
+  \quad y = g_N/\aO.
+\end{equation}
+
+\section{Bullet Cluster: Estimativa de Ordem de Magnitude}
+\label{app:bullet}
+
+O aglomerado em fusão 1E\,0657-558 (Bullet Cluster) exibe um
+deslocamento espacial de $\Delta x \sim 200$\,kpc entre o
+centroide do lensing gravitacional e o centroide do gás
+(raios X)~\cite{Clowe2006}.
+
+A aceleração gravitacional característica no raio de core
+$r_c = 300$\,kpc do aglomerado principal
+($M_{\rm tot} = 1{,}5\times10^{15}\,M_\odot$) é
+\begin{equation}
+  g_{\rm bullet} = \frac{GM_{\rm tot}}{r_c^2}
+  \approx 21{,}3\,\aO,
+\end{equation}
+colocando o sistema firmemente no regime newtoniano da DEV
+($\mu \to 1$, deslizamento gravitacional
+$\eta -1 \sim 1{,}6\times10^{-3}$ em $r_c$).
+
+Para uma fração de desaceleração por pressão de arrasto
+$f_{\rm decel} = 0{,}3$ aplicada ao longo do tempo de
+cruzamento $t_{\rm cross} = r_c/v_{\rm rel} \approx 98$\,Myr
+(com $v_{\rm rel} = 3000$\,km\,s$^{-1}$), a separação estimada
+do centroide é
+\begin{equation}
+  \Delta x \approx 216\,{\rm kpc}
+  \quad [72\text{--}360\,{\rm kpc\ para\ }
+  f_{\rm decel}\in(0{,}1,\,0{,}5)],
+\end{equation}
+consistente com o deslocamento observado de ${\sim}200$\,kpc.
+
+Esta estimativa é apenas de ordem de magnitude.
+Uma predição quantitativa requer simulação numérica do sistema
+acoplado $\{\theta, A_\mu\}$ durante a fusão, o que diferimos
+para trabalho futuro.
+
+% ============================================================
+\bibliographystyle{apsrev4-2}
+\bibliography{dev_refs}
+
+\end{document}

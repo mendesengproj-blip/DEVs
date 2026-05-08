@@ -1,0 +1,36 @@
+Paper II - eta extended-source convolution results
+beta = 0.0075,  a0 = 3.703e+03 (km/s)^2/kpc,  c^2 = 8.988e+10
+
+=== Hernquist (M=1e11, r_s=5 kpc) ===
+  M_tot       = 1.000e+11 Msun
+  r_scale     = 5.000 kpc
+  r_MOND      = 10.779 kpc
+  r_scale/r_MOND = 0.4639
+  |res| r>rMOND   : mean=100.00%  max=100.00%
+  |res| r<rMOND   : mean=100.00%  max=100.00%
+  |res| r>3rMOND  : mean=100.00%  max=100.00%
+  |res| r=r_eff   : mean=100.00%  max=100.00%
+  |res| r=rMOND   : mean=100.00%  max=100.00%
+
+=== Plummer DGSAT-I (M=3e8, r_eff=4.7 kpc) ===
+  M_tot       = 3.000e+08 Msun
+  r_scale     = 4.700 kpc
+  r_MOND      = 0.590 kpc
+  r_scale/r_MOND = 7.9612
+  |res| r>rMOND   : mean=100.00%  max=100.00%
+  |res| r<rMOND   : mean=100.00%  max=100.00%
+  |res| r>3rMOND  : mean=100.00%  max=100.00%
+  |res| r=r_eff   : mean=100.00%  max=100.00%
+  |res| r=rMOND   : mean=100.00%  max=100.00%
+
+=== NFW (rho0 fit M(10)=1e10, r_s=10 kpc) ===
+  M_tot       = 1.083e+11 Msun
+  r_scale     = 10.000 kpc
+  r_MOND      = 11.218 kpc
+  r_scale/r_MOND = 0.8914
+  |res| r>rMOND   : mean=100.00%  max=100.00%
+  |res| r<rMOND   : mean=100.00%  max=100.00%
+  |res| r>3rMOND  : mean=100.00%  max=100.00%
+  |res| r=r_eff   : mean=100.00%  max=100.00%
+  |res| r=rMOND   : mean=100.00%  max=100.00%
+
