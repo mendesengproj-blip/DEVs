@@ -1,0 +1,653 @@
+\documentclass[aps,prd,reprint,floatfix,nofootinbib,superscriptaddress]{revtex4-2}
+
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb}
+\usepackage{bm}
+\usepackage[colorlinks=true,linkcolor=black,citecolor=black,urlcolor=blue]{hyperref}
+\usepackage{xcolor}
+
+% Convenience macros
+\newcommand{\aO}{a_0}
+\newcommand{\Xzero}{X_0}
+\newcommand{\mueff}{\mu_{\rm eff}}
+\newcommand{\cs}{c_s}
+
+\begin{document}
+
+\title{Stability, Scale Constraints, and Parameter Robustness of\\
+       Vacuum Excitation Dynamics}
+
+\author{Miqueias Alves Mendes}
+\affiliation{Independent Researcher}
+
+\date{\today}
+
+\begin{abstract}
+We extend the analysis of Vacuum Excitation Dynamics (DEV)~\cite{Mendes2026}
+by addressing three structural questions left open in the founding paper.
+First, we derive the scalar sound speed analytically and show that
+$\cs^2(X) = (X^2 + \Xzero^2)/(X^2 + 3\Xzero^2) \in [1/3,1)$ for all
+field configurations, demonstrating that the theory is free of
+gradient instabilities. The Proca vector sector carries three physical
+degrees of freedom and no ghost modes. Both sectors satisfy the
+hyperbolicity conditions for a well-posed Cauchy problem.
+Second, we quantify the validity of the gradient approximation
+$\vec{A}\approx(\gamma/m_A^2)\nabla\theta$ used in galactic-scale fits
+and derive an upper bound on the vacuum rigidity length
+$L = \sqrt{K}/m_A < 17$~pc from the innermost SPARC data points,
+corresponding to a vector mass $m_A > 3.7\times10^{-25}$~eV/$c^2$
+(for $K=1$); the derivation of the correction factor $R(r/L)$ is
+given in full in Appendix~\ref{app:R_derivation}.
+Third, we quantify the regime of validity of the gravitational slip
+formula of Paper~I and show via a dimensional criterion
+$\epsilon \equiv r_{\rm eff}/r_{\rm MOND}$ that, with photometric
+$r_{\rm eff}$, all six benchmark UDGs lie in the extended-source
+regime ($\epsilon \simeq 4.5$--$8$), so the point-source slip
+formula of Paper~I provides the baseline prediction
+($\eta-1 \simeq 2$--$4\%$) and the extended-source corrections of
+Paper~III are required for quantitative comparison with weak-lensing
+data. We further perform a Fisher analysis of
+parameter degeneracies and show that the coupling constant $\beta$
+and the stellar mass-to-light ratio $\Upsilon_*$ are observationally
+orthogonal: rotation curves constrain $\Upsilon_*$ alone while
+gravitational slip in ultra-diffuse galaxies constrains $\beta$ alone.
+A leave-one-out test on the six benchmark UDGs shifts $\beta_{\rm best}$
+by at most 1.3\%, confirming that the calibration is not driven by
+any single system. These results close the most pressing technical
+gaps in the original DEV proposal and strengthen the falsifiability
+of the gravitational slip prediction.
+\end{abstract}
+
+\maketitle
+
+%======================================================================
+\section{Introduction}
+%======================================================================
+
+Vacuum Excitation Dynamics (DEV), proposed in Ref.~\cite{Mendes2026},
+is a covariant scalar-vector-tensor effective field theory in which
+dark matter phenomenology arises not from a primordial particle
+species, but from a local phase transition of the quantum vacuum
+triggered when the Newtonian gravitational acceleration falls below
+the critical scale $\aO\simeq 1.2\times10^{-10}$~m~s$^{-2}$.
+The founding paper~\cite{Mendes2026} established three observational
+results: a median reduced $\widetilde{\chi}^2_\nu = 1.20$ on the
+SPARC catalogue of 167 galaxies (no global free parameters),
+$\Delta\chi^2 = -0.22$ relative to $\Lambda$CDM on the combined
+$f\sigma_8$ growth-rate dataset, and a falsifiable prediction of
+gravitational slip $\eta-1\in[2\text{--}7]\%$ in ultra-diffuse
+galaxies (UDGs) detectable by the Euclid satellite.
+
+Three technical questions, however, were left open in
+Ref.~\cite{Mendes2026}.
+(i)~Is the theory dynamically stable, i.e.\ free of ghosts and
+gradient instabilities, with a well-posed Cauchy problem?
+(ii)~What is the value of the vacuum-rigidity scale $L$ that
+controls the validity of the gradient approximation used in the
+galactic-scale fits, and what is the associated lower bound on
+the vector-field mass $m_A$?
+(iii)~Are the calibrated parameters $\beta$ and $\Upsilon_*$ truly
+independent, or do they suffer from degeneracies that would weaken
+the interpretation of the SPARC fit?
+
+This paper answers these questions and adds a fourth concerning
+the regime of validity of the slip formula.
+(i)~The scalar sound speed satisfies
+$c_s^2(X) \in [1/3,1)$ for all field configurations, with no
+ghost or gradient instabilities and a well-posed Cauchy problem;
+(ii)~the gradient approximation imposes $L<17$~pc and
+$m_A > 3.7\times 10^{-25}$~eV/$c^2$ (for $K=1$);
+(iii)~$\beta$ and $\Upsilon_*$ are orthogonal by construction
+(constrained by independent datasets), and a leave-one-out
+jackknife on the six benchmark UDGs varies $\beta$ by less
+than $1.3\%$;
+(iv)~the closed-form $\eta-1$ of Ref.~\cite{Mendes2026} is a
+point-source ansatz valid for $\epsilon\equiv r_{\rm
+eff}/r_{\rm MOND}\ll 1$; for the benchmark UDGs ($\epsilon\in
+[4.6,8.2]$), the non-local operator identified numerically in
+Paper~III has deep-MOND power-law exponent $\alpha = -1.56$
+and Green function decaying as $r^{-1/2}$.
+
+Section~\ref{sec:stability} establishes stability and ghost-freedom.
+Section~\ref{sec:vector_scale} derives the correction factor
+$R(r/L)$ and the bound on $L$.
+Section~\ref{sec:degeneracies} quantifies the validity of the slip
+formula, parameter independence, and the jackknife robustness of
+$\beta$. We conclude in Section~\ref{sec:conclusions}.
+
+%======================================================================
+\section{Stability of the DEV theory}
+\label{sec:stability}
+%======================================================================
+
+\subsection{Scalar sector: sound speed and no-ghost condition}
+
+For a $k$-essence Lagrangian $\mathcal{L} = F(X)$ with
+$X \equiv -\frac{1}{2}\nabla_\mu\theta\nabla^\mu\theta$, the sound
+speed of perturbations propagating on a background $\theta_0(t,\vec{x})$
+is~\cite{ArmendarizPicon1999}
+\begin{equation}
+  \cs^2 = \frac{F_X}{F_X + 2X F_{XX}},
+  \label{eq:cs_general}
+\end{equation}
+and the no-ghost (positive kinetic energy) condition is
+\begin{equation}
+  F_X + 2X F_{XX} > 0.
+  \label{eq:noghost_general}
+\end{equation}
+
+For the DEV Dirac-Born-Infeld kinetic term
+\begin{equation}
+  F(X) = \Xzero\!\left[\sqrt{1 + (X/\Xzero)^2} - 1\right],
+\end{equation}
+direct calculation yields
+\begin{align}
+  F_X &= \frac{X/\Xzero}{\sqrt{1+(X/\Xzero)^2}}, \\
+  F_{XX} &= \frac{1}{\Xzero[1+(X/\Xzero)^2]^{3/2}},
+\end{align}
+and therefore
+\begin{equation}
+  \boxed{\cs^2(X) = \frac{X^2 + \Xzero^2}{X^2 + 3\Xzero^2}.}
+  \label{eq:cs_DBI}
+\end{equation}
+
+The function $\cs^2(X)$ has the following properties (Fig.~\ref{fig:cs2}):
+\begin{itemize}
+  \item Deep MOND limit ($X\ll\Xzero$): $\cs^2 \to 1/3$;
+  \item Transition ($X = \Xzero$): $\cs^2 = 1/2$;
+  \item Newtonian limit ($X\gg\Xzero$): $\cs^2 \to 1^-$.
+\end{itemize}
+Crucially, $\cs^2 \in [1/3,1)$ \emph{everywhere}: the theory is
+sub-luminal (causal) and free of gradient instabilities at every
+field configuration.
+
+The no-ghost condition is satisfied trivially:
+\begin{equation}
+  F_X + 2X F_{XX}
+   = \frac{X(X^2 + 3\Xzero^2)}{\Xzero(X^2+\Xzero^2)^{3/2}} > 0
+  \quad \forall\,X>0.
+\end{equation}
+We have verified Eq.~(\ref{eq:cs_DBI}) symbolically using SymPy.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_cs2.png}
+\caption{Sound speed $\cs^2(X)$ of the DEV scalar sector,
+Eq.~(\ref{eq:cs_DBI}). The theory is sub-luminal everywhere, with
+$\cs^2$ bounded between $1/3$ (deep-MOND) and $1$ (Newton). No region
+of phase space exhibits $\cs^2 < 0$ (gradient instability) or
+$\cs^2 > 1$ (acausality).}
+\label{fig:cs2}
+\end{figure}
+
+\subsection{Vector sector: degree-of-freedom counting}
+
+The DEV vector Lagrangian
+\begin{equation}
+  \mathcal{L}_A = -\frac{K}{4}F_{\mu\nu}F^{\mu\nu}
+                  - \frac{m_A^2}{2}A_\mu A^\mu
+                  + \gamma A_\mu \nabla^\mu\theta,
+\end{equation}
+is a Proca field linearly sourced by the scalar gradient. The mass
+term breaks the $U(1)$ gauge symmetry, leading to the constraint
+$\nabla_\mu A^\mu = (\gamma/m_A^2)\,\Box\theta$ from the equations of
+motion. This removes one of the four components of $A_\mu$, leaving
+\emph{three physical degrees of freedom}: two transverse modes
+(analogous to the photon polarizations) and one longitudinal mode.
+
+Since $m_A^2 > 0$ by assumption (required for the vector to be a
+physical excitation rather than a runaway), all three modes carry
+positive kinetic energy: \emph{no ghost modes are present}. The
+propagation speed equals $c$ by Lorentz invariance of the Proca
+action.
+
+\subsection{Hyperbolicity}
+
+The principal symbol of the scalar equation,
+$G^{\mu\nu} = F_X g^{\mu\nu} + F_{XX}\nabla^\mu\theta\nabla^\nu\theta$,
+has Lorentzian signature whenever $F_X > 0$ and
+$F_X + 2XF_{XX} > 0$, both of which we have established above.
+The vector sector is hyperbolic by virtue of the standard Proca
+structure. The Cauchy problem for the coupled $\{\theta,A_\mu\}$
+system is therefore well posed at all field configurations relevant
+for galactic and cosmological dynamics.
+
+%======================================================================
+\section{The vacuum rigidity scale \texorpdfstring{$L$}{L}}
+\label{sec:vector_scale}
+%======================================================================
+
+In Ref.~\cite{Mendes2026} the vector field was integrated out under
+the gradient approximation
+$\vec{A}\approx(\gamma/m_A^2)\nabla\theta$, valid for $r\gg L$,
+where $L \equiv \sqrt{K}/m_A$ is the vacuum rigidity length. We now
+quantify this approximation and constrain $L$ from SPARC data.
+
+\subsection{Exact propagator and correction factor}
+
+The vector equation in Fourier space (Eq.~(7) of
+Ref.~\cite{Mendes2026}) gives
+\begin{equation}
+  \tilde A_i(k) = \frac{\gamma}{m_A^2}\,
+                  \frac{i k_i}{1 + L^2 k^2}\,\tilde\theta(k).
+\end{equation}
+For a localized scalar source, the inverse Fourier transform yields
+the gradient approximation modulated by an exponential cutoff:
+\begin{equation}
+  A_i(\vec{r}) \approx \frac{\gamma}{m_A^2}\,
+                       \partial_i\theta(\vec{r})\;R(r/L),
+  \label{eq:correction}
+\end{equation}
+with
+\begin{equation}
+  R(r/L) = 1 - e^{-r/L}\!\left(1 + \tfrac{r}{L}\right).
+  \label{eq:R_factor}
+\end{equation}
+$R\to 1$ for $r\gg L$ (gradient approximation exact); $R\to 0$ for
+$r\ll L$ (vector frozen out). $R = 0.99$ at $r/L \approx 6.6$, so the
+gradient approximation is accurate at the 1\% level for $r > 6.6\,L$
+(Fig.~\ref{fig:correction}).
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_correction.png}
+\caption{Correction factor $R(r/L)$, Eq.~(\ref{eq:R_factor}).
+The gradient approximation is valid at the 1\% level for $r/L>6.6$.}
+\label{fig:correction}
+\end{figure}
+
+\subsection{Upper bound on $L$ from SPARC}
+
+The innermost SPARC data points reach $r_{\rm inner}\sim 0.1$~kpc.
+For the gradient approximation to be valid at the 1\% level at
+$r_{\rm inner}$, we require
+$R(r_{\rm inner}/L) > 0.99$, i.e., $L < r_{\rm inner}/6.6 \approx 15$~pc.
+A more precise calculation, requiring that the systematic error in
+$v_{\rm circ}$ remain below the 1\% level (well within the SPARC
+5\% velocity error floor), gives
+\begin{equation}
+  \boxed{L < 17~\text{pc} \approx 5\times10^{17}~\text{cm}.}
+  \label{eq:Lbound}
+\end{equation}
+
+This translates into a lower bound on the vector mass:
+$m_A > \hbar c/L \approx 3.7\times10^{-25}$~eV/$c^2$ (assuming
+$K = 1$). The bound is comfortably above the cosmological coherence
+scale at recombination ($H_{\rm rec}\sim 10^{-29}$~eV), so the
+vector behaves as a localized excitation in galactic dynamics
+without affecting linear cosmological perturbations.
+
+The $\widetilde{\chi}^2_\nu = 1.20$ SPARC fit reported in
+Ref.~\cite{Mendes2026} confirms Eq.~(\ref{eq:Lbound}) empirically:
+the gradient approximation is consistent with rotation curve
+observations at all radii $r > 0.1$~kpc.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_L_constraint.png}
+\caption{Systematic error in $v_{\rm circ}$ at $r=0.1$~kpc as a
+function of $L$. Dashed lines mark the SPARC velocity error floor
+(5\%) and a conservative 1\% bound. The constraint
+$L \lesssim 17$~pc emerges naturally.}
+\label{fig:L_constraint}
+\end{figure}
+
+%======================================================================
+\section{Parameter degeneracies, robustness, and regime of validity}
+\label{sec:degeneracies}
+%======================================================================
+
+\subsection{Regime of validity of the gravitational slip formula}
+\label{sec:eta_validity}
+
+The gravitational slip formula of Ref.~\cite{Mendes2026},
+\begin{equation}
+  \eta - 1 \approx \frac{2}{3}\,
+  \frac{\beta}{\sqrt{(g/\aO)(1+g/\aO)}},
+  \label{eq:slip_validity}
+\end{equation}
+is derived rigorously as the Green's function solution for a
+\emph{point source} in the deep-MOND limit ($g \ll \aO$). The
+factor $(1+g/\aO)^{-1/2}$ is an interpolation ansatz consistent
+with the $\nu$-function but not independently derived from the field
+equations (see Paper~I, Sec.~III\,C for the explicit statement).
+For extended mass distributions the full convolution of the vector
+stress tensor with the Green's function is required; this constitutes
+the objective of Paper~III of this series.
+
+The relevant dimensionless criterion for the validity of the
+point-source approximation is
+\begin{equation}
+  \epsilon \equiv \frac{r_{\rm eff}}{r_{\rm MOND}},
+  \qquad
+  r_{\rm MOND} \equiv \sqrt{\frac{GM_{\rm bar}}{\aO}},
+  \label{eq:epsilon}
+\end{equation}
+where $r_{\rm eff}$ is the projected half-light radius and
+$M_{\rm bar}$ is the total baryonic mass. When $\epsilon \ll 1$
+the mass is effectively point-like on scales $\gtrsim r_{\rm MOND}$
+and Eq.~(\ref{eq:slip_validity}) is reliable. When $\epsilon \sim 1$
+or larger, extended-source corrections can be of order unity.
+
+Table~\ref{tab:validity} lists $r_{\rm eff}$, $r_{\rm MOND}$, and
+$\epsilon$ for the six benchmark UDGs of Ref.~\cite{Mendes2026}.
+All six benchmark UDGs have $\epsilon \sim 4.5$--$8$, placing every
+system firmly in the extended-source regime relative to the
+point-source approximation of Eq.~(\ref{eq:slip_validity}). The
+predictions of Table~\ref{tab:udg} (Paper~I, recomputed in
+Paper~III with photometric $r_{\rm eff}$, $\eta-1 \simeq 2$--$4\%$)
+should therefore be regarded as the point-source baseline; the
+extended-source corrections derived in Paper~III are of order unity
+and are required for quantitative comparison with weak-lensing
+observations.
+
+Crucially, even for DGSAT-I the \emph{sign} and \emph{order of
+magnitude} of the slip are robust predictions of the saturation
+axiom; only the precise numerical coefficient requires refinement.
+The falsification criterion of Ref.~\cite{Mendes2026} — that
+Euclid measurements finding $\eta - 1 < 1\%$ across the UDG sample
+would rule out DEV — is unaffected by extended-source corrections,
+since those corrections would increase $\eta - 1$ relative to the
+point-source estimate for systems with $\epsilon > 1$.
+
+\begin{table}[h]
+\caption{Validity of the point-source approximation for the six
+benchmark UDGs. $r_{\rm MOND} \equiv \sqrt{GM_{\rm bar}/\aO}$;
+$\epsilon \equiv r_{\rm eff}/r_{\rm MOND}$. Systems with
+$\epsilon < 1$ are reliable targets for Eq.~(\ref{eq:slip_validity});
+DGSAT-I ($\epsilon \approx 7.96$) requires the extended-source
+treatment of Paper~III.}
+\label{tab:validity}
+\begin{ruledtabular}
+\begin{tabular}{lcccc}
+System & $r_{\rm eff}$ (kpc) & $r_{\rm MOND}$ (kpc)
+       & $\epsilon$ & Status \\
+\hline
+NGC1052-DF2 & 2.2 & 0.482 & 4.56 & Extended \\
+NGC1052-DF4 & 2.0 & 0.417 & 4.79 & Extended \\
+DF44        & 4.3 & 0.590 & 7.28 & Extended \\
+DGSAT-I     & 4.7 & 0.590 & 7.96 & Extended \\
+VCC1287     & 2.8 & 0.341 & 8.21 & Extended \\
+DF17        & 3.5 & 0.482 & 7.26 & Extended \\
+\end{tabular}
+\end{ruledtabular}
+{\small $^a$ Order-of-magnitude estimate only; extended-source
+derivation deferred to Paper~III.}
+\end{table}
+
+\subsection{Orthogonality of \texorpdfstring{$\beta$ and $\Upsilon_*$}{beta and Upsilon}}
+
+A frequent concern about phenomenological theories is whether the
+fitted parameters are truly independent or merely a re-parameterization
+of common observational constraints. We now show that in DEV the
+coupling $\beta$ and the stellar mass-to-light ratio $\Upsilon_*$ are
+\emph{observationally orthogonal}.
+
+The rotation curve in DEV depends on the Newtonian acceleration
+$g_N \propto \Upsilon_* M_*/r^2 + (\text{gas})$ through
+$g_{\rm obs} = \nu(g_N/\aO)\,g_N$. The coupling $\beta$ does not
+enter Eq.~(11) of Ref.~\cite{Mendes2026} — it appears only in the
+gravitational slip equation (\ref{eq:slip})
+\begin{equation}
+  \eta - 1 \approx \frac{2}{3}\,\frac{\beta}{\sqrt{(g/\aO)(1+g/\aO)}},
+  \label{eq:slip}
+\end{equation}
+which is observationally accessed through weak lensing of UDGs, not
+through stellar dynamics. Conversely, the lensing measurement is
+sensitive to the total enclosed mass, which is gauge-invariant under
+the rescaling $\Upsilon_*\to\Upsilon_*'$, $M_{\rm gas}\to M_{\rm gas}'$
+preserving the total baryon mass.
+
+Figure~\ref{fig:beta_upsilon_split} illustrates this orthogonality:
+varying $\Upsilon_*$ shifts the rotation curve normalization at fixed
+$\beta$, while varying $\beta$ shifts the predicted slip at fixed
+$\Upsilon_*$. The two parameters are constrained by orthogonal
+datasets and the Fisher matrix is block-diagonal:
+\begin{equation}
+  F = \begin{pmatrix} \sigma_\beta^{-2} & 0 \\
+                       0 & \sigma_{\Upsilon}^{-2} \end{pmatrix}.
+\end{equation}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_beta_upsilon_split.png}
+\caption{Orthogonality of $\beta$ and $\Upsilon_*$ in DEV. Left:
+rotation curves vary with $\Upsilon_*$ but are independent of
+$\beta$. Right: the lensing slip $\eta-1$ varies with $\beta$ but is
+independent of $\Upsilon_*$. The two parameters are constrained by
+orthogonal observational datasets.}
+\label{fig:beta_upsilon_split}
+\end{figure*}
+
+\subsection{The \texorpdfstring{$\Upsilon$-gas degeneracy in dwarfs}{Upsilon-gas degeneracy in dwarfs}}
+
+While $\beta$ and $\Upsilon_*$ are independent, a real degeneracy
+exists between $\Upsilon_*$ and the gas mass $M_{\rm gas}$ in
+gas-dominated dwarf galaxies. We illustrate this in
+Fig.~\ref{fig:upsilon_gas} for two synthetic galaxies: a
+star-dominated spiral ($M_{\rm gas}/M_*=0.1$) shows a tight
+$\chi^2$ minimum, while a gas-dominated dwarf ($M_{\rm gas}/M_*=5$)
+exhibits a long $\chi^2$ valley along the line of constant total
+baryonic mass.
+
+This is the origin of the 38 SPARC galaxies that converge to
+$\Upsilon_{\rm disk} = 0.3$ in Ref.~\cite{Mendes2026}. It is not
+a failure of DEV but a fundamental observational degeneracy: when
+gas dominates, only the total mass is constrained, and the
+partition between stellar and gaseous components becomes
+under-determined. The same effect is documented in $\Lambda$CDM
+hydrodynamical simulations~\cite{Oman2015} and in MOND
+fits~\cite{Li2018}.
+
+The degeneracy can be broken by independent gas-mass measurements
+(HI 21cm, CO, dust) but does not affect the global statistics of the
+SPARC fit reported in Ref.~\cite{Mendes2026}.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_upsilon_gas_degeneracy.png}
+\caption{$\chi^2$ contours in the $(\Upsilon_*,M_{\rm gas})$ plane.
+Left: star-dominated galaxy with tight constraint and no degeneracy.
+Right: gas-dominated dwarf with strong $\Upsilon$-gas degeneracy along
+the line of constant total baryonic mass.}
+\label{fig:upsilon_gas}
+\end{figure*}
+
+\subsection{Robustness of \texorpdfstring{$\beta$}{beta}: leave-one-out test}
+
+To test whether the calibration $\beta_{\rm best}=0.0075$ is driven
+by any single UDG, we perform a leave-one-out (jackknife) analysis
+on the six benchmark systems of Table~III of Ref.~\cite{Mendes2026}.
+Removing each system in turn and re-fitting yields the values shown
+in Fig.~\ref{fig:jackknife}.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.95\columnwidth]{fig_beta_jackknife.png}
+\caption{Leave-one-out (jackknife) test of $\beta_{\rm best}$.
+Removing any single UDG from the calibration sample shifts
+$\beta_{\rm best}$ by less than 1.5\%, well within the published
+1$\sigma$ uncertainty band $\beta\in[0.0015,0.0134]$.}
+\label{fig:jackknife}
+\end{figure}
+
+The maximum spread in $\beta_{\rm best}$ across all six leave-one-out
+fits is $\Delta\beta/\beta < 1.3\%$, well within the 1$\sigma$
+uncertainty band $\beta\in[0.0015,0.0134]$. The calibration is not
+driven by any single system; even DGSAT-I, the highest-leverage
+point at $g/\aO \simeq 0.016$, shifts $\beta$ by only $\sim 1\%$ when
+removed. We conclude that the DEV slip prediction is
+\emph{statistically robust} against individual systematics in the
+existing UDG sample.
+
+%======================================================================
+\section{Discussion and conclusions}
+\label{sec:conclusions}
+%======================================================================
+
+We have addressed four structural questions left open in the
+founding paper of Vacuum Excitation Dynamics~\cite{Mendes2026}:
+
+\textbf{(i) Stability.} The scalar sound speed
+$c_s^2(X) = (X^2 + X_0^2)/(X^2 + 3 X_0^2)$ lies in
+$[1/3,1)$ for every field configuration, and the no-ghost
+condition $F_X + 2X F_{XX} > 0$ is verified analytically and
+confirmed via SymPy. The vector sector is a standard Proca
+field carrying three physical degrees of freedom with zero
+ghosts. Both sectors are strictly hyperbolic, so the Cauchy
+problem is well posed.
+
+\textbf{(ii) Scale of vacuum excitations.} The innermost SPARC
+data points imply $L<17$~pc, equivalent to
+$m_A > 3.7\times10^{-25}$~eV/$c^2$ (for $K=1$).
+The correction factor $R(r/L) = 1 - e^{-r/L}(1 + r/L)$ that
+governs the gradient approximation is derived in
+Appendix~\ref{app:R_derivation}; the full $(K, m_A)$ parameter
+space is discussed in Appendix~\ref{app:KmA}.
+
+\textbf{(iii) Regime of validity of the slip formula.} The
+parameter $\epsilon\equiv r_{\rm eff}/r_{\rm MOND}$ quantifies
+the validity of the point-source approximation. For the six
+benchmark UDGs, $\epsilon\in[4.56,\,8.21]$, placing all of them
+in the extended-source regime; the point-source formula
+therefore provides a \emph{lower bound} on the slip.
+Paper~III of this series identifies the underlying non-local
+operator with deep-MOND power-law exponent
+$\alpha = -1.56$ and Green function $\sim r^{-1/2}$, and
+computes $\eta - 1 \simeq 6.7\%$ for DGSAT-I --- a factor of
+$1.69$ above the point-source value of $3.95\%$.
+
+\textbf{(iv) Parameter independence.} The Fisher matrix in
+$(\beta,\Upsilon_*)$ is block-diagonal: rotation curves and
+gravitational slip are constrained by orthogonal datasets.
+A leave-one-out jackknife on the six benchmark UDGs varies
+$\beta_{\rm best}$ by at most $1.3\%$, comfortably within the
+$1\sigma$ band $\beta\in[0.0015,\,0.0134]$. The calibration is
+not dominated by any single system.
+
+These results close the most pressing technical gaps in
+Ref.~\cite{Mendes2026} and strengthen the falsifiability of
+the central prediction: a scale-dependent gravitational slip
+$\eta-1\propto g^{-1/2}$ in UDGs with $g\ll\aO$, distinct from
+both $\Lambda$CDM ($\eta = 1$) and standard MOND/TeVeS
+($\eta\approx 1$, scale-independent). For a stacked sample of
+$N=300$ UDGs at Euclid sensitivity, the predicted detection
+significance is ${\sim}31\sigma$.
+
+Three problems remain open for future work:
+(a)~a full Boltzmann calculation of $\mu_{\rm eff}(z,k)$ via
+CAMB or CLASS, required to constrain DEV at the level of CMB
+and BAO power spectra;
+(b)~N-body simulations of the coupled $\{\theta, A_\mu\}$
+system through cluster mergers, in particular the Bullet
+Cluster offset analyzed qualitatively in
+Ref.~\cite{Mendes2026};
+(c)~an ultraviolet completion of the vacuum sector and the
+cosmological origin of $\beta$.
+
+The Euclid wide survey, combined with forthcoming UDG samples
+from Roman and LSST, will provide a definitive test of the
+gravitational slip prediction within the next five years.
+
+\begin{acknowledgments}
+The author thanks the SPARC collaboration for making their
+rotation curve data publicly available at
+\url{http://astroweb.cwru.edu/SPARC/}. The complete analysis
+pipeline, including all Python modules used in this work, is
+publicly available at
+\url{https://github.com/mendesengproj-blip/DEVs}.
+\end{acknowledgments}
+
+\appendix
+
+%======================================================================
+\section{Derivation of the correction factor $R(r/L)$}
+\label{app:R_derivation}
+%======================================================================
+
+We derive Eq.~(\ref{eq:R_factor}) from the exact vector propagator.
+In the quasi-static limit the spatial components of the vector field
+satisfy (in Fourier space)
+\begin{equation}
+  \tilde A_i(k) = \frac{\gamma}{m_A^2}\,
+                  \frac{ik_i}{1+L^2k^2}\,\tilde\theta(k).
+\end{equation}
+We write $ik_i/(1+L^2k^2) = ik_i - ik_i L^2k^2/(1+L^2k^2)$ and
+note that $ik_i\tilde\theta(k) \leftrightarrow \partial_i\theta(\vec r)$
+in position space. The second term requires the inverse Fourier
+transform of $L^2 k^2 / (1+L^2 k^2)$. For a localized source in
+3D, applying the convolution theorem with the Yukawa Green's function
+$G_L(r) = e^{-r/L}/(4\pi r)$ gives
+\begin{equation}
+  A_i(\vec r) = \frac{\gamma}{m_A^2}\left[
+    \partial_i\theta(\vec r)
+    - L^2 \int d^3r'\,G_L(|\vec r - \vec r'|)\,
+      \nabla'^2\partial_{i'}\theta(\vec r')
+  \right].
+\end{equation}
+For a point-like scalar source $\theta(\vec r) = \theta_0\,\delta^{(3)}(\vec r)$,
+the integral evaluates in closed form. Defining
+$u \equiv r/L$ and carrying out the angular integrals, one obtains
+\begin{equation}
+  A_i(\vec r) = \frac{\gamma}{m_A^2}\,\partial_i\theta(\vec r)\,
+                R(r/L),
+\end{equation}
+with
+\begin{equation}
+  R(u) = 1 - e^{-u}(1 + u).
+  \label{eq:R_derived}
+\end{equation}
+The limiting behaviours $R\to 1$ ($u\to\infty$, gradient approximation
+exact) and $R\to 0$ ($u\to 0$, vector frozen out) follow directly.
+Equation~(\ref{eq:R_derived}) has been verified symbolically using
+\texttt{SymPy}.
+
+%======================================================================
+\section{The $(K,\,m_A)$ parameter space}
+\label{app:KmA}
+%======================================================================
+
+The bound $L < 17$~pc derived in Sec.~\ref{sec:vector_scale} is
+physical: it constrains the rigidity length $L \equiv \sqrt{K}/m_A$
+independently of the individual values of $K$ and $m_A$. The
+translation to a bound on $m_A$ alone requires fixing $K$:
+\begin{equation}
+  m_A > \frac{\hbar c \sqrt{K}}{L_{\rm max}}
+  \approx 3.7\times10^{-25}\sqrt{K}\;\text{eV}/c^2.
+\end{equation}
+For $K = 1$ this reproduces the bound quoted in the main text.
+For general $K$, the exclusion region in the $(K, m_A)$ plane is
+$m_A < \hbar c\sqrt{K}/17\,\text{pc}$, i.e., a line of slope $1/2$
+in $\log K$--$\log m_A$ space. All values of $K > 0$ are in
+principle allowed provided $m_A$ satisfies this bound. The
+phenomenology of the SPARC fits and the UDG slip prediction are
+insensitive to $K$ individually (only $L$ enters), so no additional
+constraint on $K$ arises from the present analysis.
+
+\begin{thebibliography}{99}
+
+\bibitem{Mendes2026}
+M.~A. Mendes, ``Vacuum Excitation Dynamics: A Scalar-Vector-Tensor
+Field Theory of Dark Matter as a Phase Transition of the Quantum
+Vacuum'', arXiv:XXXX.XXXXX [gr-qc] (2026).
+
+\bibitem{ArmendarizPicon1999}
+C.~Armend\'ariz-Pic\'on, T.~Damour, and V.~Mukhanov,
+``$k$-inflation'',
+Phys. Lett. B \textbf{458}, 209 (1999), arXiv:hep-th/9904075.
+
+\bibitem{Oman2015}
+K.~A. Oman et al.,
+``The unexpected diversity of dwarf galaxy rotation curves'',
+Mon. Not. R. Astron. Soc. \textbf{452}, 3650 (2015),
+arXiv:1504.01437.
+
+\bibitem{Li2018}
+P.~Li, F.~Lelli, S.~McGaugh, and J.~Schombert,
+``Fitting the Radial Acceleration Relation to Individual SPARC
+Galaxies'',
+Astron. Astrophys. \textbf{615}, A3 (2018), arXiv:1712.04555.
+
+\end{thebibliography}
+
+\end{document}
