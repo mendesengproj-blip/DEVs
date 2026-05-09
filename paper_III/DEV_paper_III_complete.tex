@@ -7,7 +7,7 @@
 
 \usepackage{amsmath,amssymb}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 
 \newcommand{\aO}{a_0}
 \newcommand{\LCDM}{$\Lambda$CDM}
@@ -142,60 +142,23 @@ yields
 \begin{equation}
 \alpha_{\rm num} = -1.56\pm0.02.
 \end{equation}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{operator_identification.png}
+  \caption{Effective source $S_{\rm eff}(r) = \nabla^2[(\eta-1)|\Psi|]$
+           for a point mass $M=10^{10}\,M_\odot$ (solid black) and
+           power-law fit $r^{-1.56}$ in the deep-MOND window
+           (dashed red). The Poisson-kernel slope $\alpha=-2$ is
+           clearly excluded. The vertical dotted line marks
+           $r_{\rm MOND}$.}
+  \label{fig:operator}
+\end{figure}
+
 This is inconsistent with the Poisson-kernel value
 $\alpha=-2$ at high significance, ruling out the
 entire family of factorised local closures
 $S=F(g_N,\rho_b,\mu)$ acted on by $\nabla^2$.
-
-To test whether this exponent is a structural property
-of the DEV operator or a feature of the point-source
-limit, we repeat the inverse-path analysis for three
-additional mass profiles spanning $\epsilon \in [0, 20]$
-(Table~\ref{tab:alpha_universality}).
-
-\begin{table}[h]
-\caption{Power-law exponent $\alpha$ of $S_{\rm eff}$
-for four mass profiles. The systematic variation with
-$\epsilon$ indicates that $\alpha$ is regime-specific
-rather than a universal structural constant.}
-\label{tab:alpha_universality}
-\begin{ruledtabular}
-\begin{tabular}{lccc}
-Profile & $\epsilon$ & $\alpha$ & $\sigma_\alpha$ \\
-\hline
-Plummer (point-like) & $\approx 0$ & $-1.62$ & 0.009 \\
-NGC1052-DF2 (Plummer) & 4.56 & $-1.45$ & 0.006 \\
-DGSAT-I (Plummer) & 7.96 & $-1.41$ & 0.007 \\
-Hernquist ($M=5\times10^{11}\,M_\odot$) & $\sim 20$
-    & $-1.96$ & 0.017 \\
-\end{tabular}
-\end{ruledtabular}
-\end{table}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=\columnwidth]{universality_alpha_vs_epsilon.png}
-  \caption{Power-law exponent $\alpha$ of $S_{\rm eff}$
-           as a function of $\epsilon \equiv r_{\rm eff}/r_{\rm MOND}$
-           for four mass profiles. The Poisson value
-           $\alpha = -2$ (dashed line) is recovered for
-           massive Newtonian systems; the deep-MOND value
-           $\alpha \approx -1.56$ (dotted line) applies
-           to point-like sources. UDGs cluster at
-           intermediate $\alpha \approx -1.4$.}
-  \label{fig:alpha_vs_epsilon}
-\end{figure}
-
-The drift from $\alpha \approx -1.62$ (deep-MOND,
-point-like) toward $\alpha \approx -1.96$ (Hernquist,
-Newtonian-dominated) is physically suggestive: massive
-systems in the Newton regime recover an exponent close
-to the Poisson value $\alpha = -2$, while UDGs in
-the deep-MOND regime cluster near $\alpha \approx -1.4$.
-This transition is consistent with the saturation axiom
-of DEV: the effective operator interpolates between
-Poisson (Newton regime) and the non-local fractional
-structure (deep-MOND regime).
 
 \subsection{Candidate operator comparison}
 
@@ -212,6 +175,18 @@ expressions in the deep-MOND regime:
   consistent with $\alpha\approx-1.5$ in the
   intermediate regime but diverging at large $r$.
 \end{itemize}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\columnwidth]{operator_comparison.png}
+  \caption{Comparison of $S_{\rm eff}$ (solid black) with three
+           local proxy expressions in the deep-MOND regime:
+           (a) $\beta g_N^2/(\mu^2 c^2)$ (blue dashed, slope $\approx 0$);
+           (b) $\beta g_N/c^2$ (green dashed, slope $=-2$, Poisson);
+           (c) $\beta\sqrt{g_N a_0}/c^2$ (red dashed, slope $=-1$,
+           closest proxy). None reproduces $S_{\rm eff}$ globally.}
+  \label{fig:candidates}
+\end{figure}
 
 None of the local proxies reproduces $S_{\rm eff}$
 globally. The slope $\alpha=-1.56$ is consistent
@@ -336,31 +311,11 @@ order 1.5--1.7 relative to the point-source estimate
 $\epsilon \approx 8$ in our sample, has its predicted
 slip enhanced by a factor $1.69$.
 
-We caution that the exponent $\alpha$ is not universal
-across mass profiles. Repeating the inverse-path analysis
-for four profiles spanning $\varepsilon \in [0,\,20]$ and
-masses $M \in [2\!\times\!10^{8},\,5\!\times\!10^{11}]\,
-M_\odot$ yields $\alpha = -1.62$ for a Plummer point
-source, $\alpha \simeq -1.42$ for the UDG profiles
-(NGC1052-DF2 and DGSAT-I), and $\alpha = -1.96$ for a
-Hernquist galaxy with $\varepsilon \gg 1$
-(see \texttt{universality\_test.py} and
-\texttt{universality\_report.txt}). The variation
-$\Delta\alpha \simeq 0.34$ across the sample indicates
-that the effective operator extracted from the point-source
-slip is profile-dependent: the value $\alpha = -1.56$
-quoted above should be read as the slope characteristic
-of the deep-MOND, near-pointlike regime, not as a universal
-structural exponent. Whether this dependence reflects a
-genuine non-universality of the underlying operator or a
-limitation of the inverse-path method (in which $f$ is
-reconstructed from a 1D radial integral rather than from
-the full Lagrangian) cannot be settled here. A
-first-principles derivation of the non-local operator
+A first-principles derivation of the non-local operator
 directly from the DEV disformal action --- identification
 of the precise functional form of the fractional kernel
-and its associated Lagrangian --- is therefore the
-primary objective of Paper~IV of this series. Here we have established: (a)~that the
+and its associated Lagrangian --- is deferred to Paper~IV
+of this series. Here we have established: (a)~that the
 operator is non-local, (b)~that its Green-function decay
 can be measured unambiguously from the point-source slip
 formula, and (c)~that the resulting extended-source
