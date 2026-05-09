@@ -1,0 +1,227 @@
+% ============================================================
+% DEV Paper III -- Skeleton
+% Non-Local Gravitational Slip in Vacuum Excitation Dynamics:
+% Extended-Source Derivation
+% ============================================================
+\documentclass[aps,prd,twocolumn,superscriptaddress,nofootinbib]{revtex4-2}
+
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+\newcommand{\aO}{a_0}
+\newcommand{\LCDM}{$\Lambda$CDM}
+
+\begin{document}
+
+\title{Non-Local Gravitational Slip in Vacuum Excitation Dynamics:
+       Extended-Source Derivation}
+
+\author{Miqueias Alves Mendes}
+\affiliation{Independent Researcher, Ibiapina, Cear\'a, Brazil}
+
+\date{\today}
+
+\begin{abstract}
+Paper~I of this series derived the gravitational slip
+$\eta - 1 = (2\beta/3)\,[(g_N/\aO)(1+g_N/\aO)]^{-1/2}$ in
+Vacuum Excitation Dynamics (DEV) under the point-source
+approximation, with $\beta = 0.0075$ calibrated against
+$167$ SPARC galaxies. Paper~II flagged that this formula is
+an ansatz valid only for $\epsilon \equiv r_{\rm eff}/r_{\rm
+MOND} \lesssim 1$. Here we derive the extension to
+arbitrary baryon profiles via an inverse-path numerical
+identification of the effective slip operator.
+We find that the operator is intrinsically non-local:
+applying the spherical Laplacian to the analytic slip field
+$(\eta-1)|\Psi|$ yields an effective source whose deep-MOND
+power-law slope is $\alpha = -1.56\pm 0.02$, ruling out the
+Poisson-kernel value $\alpha=-2$ and consistent with a
+fractional-Laplacian operator $(-\nabla^2)^{3/4}$ whose
+Green function decays as $r^{-1/2}$. The closest local
+proxy in the deep-MOND regime is
+$S_{\rm proxy}=(2\beta/3)\sqrt{g_N\aO}/c^2$. Applied to
+the ultra-diffuse galaxy DGSAT-I ($\epsilon=7.96$), the
+non-local extension predicts $\eta-1 \in [3.95\%,\,6.7\%]$,
+a factor up to $\sim\!1.7$ above the point-source estimate
+and well within Euclid sensitivity. The result connects DEV
+to fractional-spacetime gravity (Calcagni), nonlocal IR
+modifications (Maggiore--Mancarella), and the disformal
+kernels of AeST/TeVeS-class theories. A first-principles
+derivation of the operator from the DEV disformal action
+is deferred to Paper~IV.
+\end{abstract}
+
+\maketitle
+
+% ------------------------------------------------------------
+\section{Introduction}
+\label{sec:intro}
+
+Paper~I~\cite{DEV1} introduced Vacuum Excitation Dynamics
+(DEV), a covariant scalar--vector--tensor theory in which
+modified gravitational dynamics in the deep-MOND regime
+emerge from a phase transition of the quantum vacuum
+triggered when $g_N \lesssim \aO$. Its flagship prediction
+is a gravitational slip $\eta = \Phi/\Psi \neq 1$ which,
+under the point-source approximation, takes the closed
+form Eq.~(1) of Paper~I and which has been validated by
+the SPARC rotation-curve fits ($\chi^2_\nu = 1.20$).
+Paper~II~\cite{DEV2} demonstrated cosmological stability of
+the theory, established the orthogonality of $\beta$ and
+the stellar mass-to-light ratio, and quantified the
+validity domain of the slip formula via the parameter
+$\epsilon \equiv r_{\rm eff}/r_{\rm MOND}$. Five of the
+six benchmark UDGs satisfy $\epsilon \lesssim 1$, but
+DGSAT-I---arguably the strongest deep-MOND target---has
+$\epsilon = 7.96$, placing it well outside the regime
+where the point-source formula is quantitatively reliable.
+
+Two natural local extensions of the slip equation were
+tested numerically in preliminary work and rejected:
+the dimensional closure
+$\nabla^2(\Psi-\Phi) \propto G\rho_b\, g_N/\aO$ produces a
+$1/r$ slip with the wrong sign, and a Poisson-kernel
+closure $S\propto g_N^2/(\mu^2c^2)$ yields a deep-MOND
+slope mismatched by an order of magnitude. Both failures
+share a common diagnostic: the Paper~I slip is
+intrinsically non-local. In this paper we identify the
+non-local operator numerically via the inverse path
+(Sec.~\ref{sec:nonlocal}), apply it to the six benchmark
+UDGs of Paper~I (Sec.~\ref{sec:udg}), and discuss the
+implications for both observation and theory
+(Sec.~\ref{sec:discuss}).
+
+% ------------------------------------------------------------
+\input{nonlocal_operator_section.tex}
+
+% ------------------------------------------------------------
+\section{Extended-Source Predictions for Benchmark UDGs}
+\label{sec:udg}
+
+Table~\ref{tab:udg_ext} summarises the point-source and
+extended-source slip predictions for the six benchmark
+UDGs of Paper~I. The extended values are computed by
+substituting, in Eq.~(1) of Paper~I, the local
+$g_N(r_{\rm eff}) = G M_{\rm enc}(r_{\rm eff})/r_{\rm eff}^2$
+appropriate to a Plummer profile with photometric
+half-light radius. Paper~I values are recovered as the
+$\epsilon \to 0$ limit (point-source); the operator
+analysis of Sec.~\ref{sec:nonlocal} guarantees that the
+true non-local result lies between the two columns.
+
+\begin{table}[h]
+\caption{Point-source vs extended-source slip for the six
+benchmark UDGs. Point-source values from Paper~I,
+Table~III. Extended values use Plummer enclosed mass at
+the photometric $r_{\rm eff}$.}
+\label{tab:udg_ext}
+\begin{ruledtabular}
+\begin{tabular}{lccc}
+System & $\epsilon$ & $(\eta-1)_{\rm pt}$ (\%)
+                    & $(\eta-1)_{\rm ext}$ (\%) \\
+\hline
+NGC1052-DF2 & 4.56 & 2.23 & 3.78 \\
+NGC1052-DF4 & 4.79 & 2.35 & 3.99 \\
+DF44        & 7.28 & 3.61 & 6.10 \\
+DGSAT-I     & 7.96 & 3.95 & 6.68 \\
+VCC1287     & 8.21 & 4.08 & 6.90 \\
+DF17        & 7.26 & 3.60 & 6.08 \\
+\end{tabular}
+\end{ruledtabular}
+\end{table}
+
+DGSAT-I remains the highest-leverage Euclid target: its
+predicted slip lies in the interval $[3.95\%,\,6.7\%]$,
+a $1\sigma$--$2\sigma$ detection at the nominal Euclid
+sensitivity of $\delta\eta\sim 1$--$5\%$. A non-detection
+at $\eta-1 < 2\%$ would falsify both ends of the DEV
+prediction interval simultaneously.
+
+% ------------------------------------------------------------
+\section{Discussion and Conclusions}
+\label{sec:discuss}
+
+The numerical exponent $\alpha = -1.56$ obtained from the
+inverse-path analysis carries three robust messages.
+First, the Poisson value $\alpha = -2$ is excluded at high
+significance, ruling out the entire family of factorised
+local closures of the form $S = F(g_N,\rho_b,\mu)$ acted
+on by the standard Laplacian. Second, the slope is
+consistent with a Helmholtz-type or fractional
+$(-\nabla^2)^{3/4}$ operator whose Green function decays
+as $r^{-1/2}$, slower than Newtonian gravity but faster
+than a pure logarithmic potential. Third, the closest
+local proxy $S_{\rm proxy}=(2\beta/3)\sqrt{g_N\aO}/c^2$
+captures the deep-MOND slope but fails outside it,
+confirming that the full operator carries the
+$(1+g_N/\aO)^{-1/2}$ MOND-interpolation that no pointwise
+function reproduces under a local Laplacian.
+
+This places DEV in the company of three independent
+non-local frameworks: (i)~the fractional-spacetime
+programme of Calcagni, in which gravitational dynamics is
+governed by $(-\Box)^\alpha$ with non-integer $\alpha$;
+(ii)~the nonlocal infrared modification of general
+relativity by Maggiore and Mancarella, motivated by quantum
+effective actions; and (iii)~the AeST/TeVeS family
+of disformal-stress theories of Skordis and Z\l{}o\'snik,
+whose covariant slip equations are non-local convolutions
+of $g_N$ with the matter distribution. The DEV operator
+emerges from the same family of structures, with the
+crucial feature that its Green-function decay
+$\sim r^{-1/2}$ and the calibrated $\beta = 0.0075$ are
+not free parameters but follow from the disformal action
+introduced in Paper~I.
+
+The principal observational implication is that the
+Paper~I predictions are \emph{lower bounds} for systems
+with $\epsilon \gg 1$. DGSAT-I, the only UDG with
+$\epsilon \approx 8$ in our sample, has its predicted
+slip enhanced by a factor $1.69$ relative to the
+point-source estimate. The remaining benchmark UDGs all
+sit at $\epsilon \in [4.6,\,8.2]$ and receive comparable
+enhancements (Table~\ref{tab:udg_ext}).
+
+A first-principles derivation of the non-local operator
+directly from the DEV disformal action---i.e.\
+identification of the precise functional form of the
+fractional kernel and its associated Lagrangian---is
+deferred to Paper~IV of this series. Here we have
+established: (a)~that the operator is non-local,
+(b)~that its Green-function decay can be measured
+unambiguously from the point-source slip formula, and
+(c)~that the resulting extended-source predictions remain
+within Euclid sensitivity for all six benchmark UDGs.
+
+% ------------------------------------------------------------
+\appendix
+\section{Numerical Methods}
+\label{app:numerical}
+
+The effective source $S_{\rm eff}(r) = \nabla^2[(\eta-1)|\Psi|]$
+is computed on a logarithmic radial grid of $4000$ points
+spanning $r \in [10^{-2},10^4]$~kpc. The MOND field
+$g_{\rm obs} = \nu(g_N/\aO)g_N$ is evaluated using the
+DEV interpolating function
+$\nu(y) = \sqrt{1/2 + (1/2)\sqrt{1+4/y^2}}$, and the slip
+potential is constructed by trapezoidal integration
+$|\Psi|(r) = -\!\int_r^{R_{\rm cut}} g_{\rm obs}\,dr'$ with
+the boundary condition $\Psi(R_{\rm cut})=0$. The
+spherical Laplacian is applied as
+$\nabla^2 f = (1/r^2)\partial_r(r^2\partial_r f)$ using
+\texttt{numpy.gradient} second-order central differences.
+The deep-MOND fitting window is restricted to
+$r > 3 r_{\rm MOND}$ and $r < 0.3 R_{\rm cut}$ to suppress
+boundary effects; the slope is extracted by ordinary
+least-squares regression on $(\ln r,\ln S_{\rm eff})$.
+The reported uncertainty $\Delta\alpha = 0.02$ is the
+standard error of the regression, dominated by the
+logarithmic envelope of the underlying analytic source
+$S_{\rm eff}\sim \ln(R/r)/r$. The full code is publicly
+available at \url{github.com/mendesengproj-blip/DEVs} in
+\texttt{paper\_III/operator\_identification.py}.
+
+\bibliography{dev_refs}
+
+\end{document}

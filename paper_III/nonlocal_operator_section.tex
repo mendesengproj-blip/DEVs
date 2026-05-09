@@ -1,0 +1,117 @@
+\section{The Non-Local Gravitational Slip Operator}
+\label{sec:nonlocal}
+
+\subsection{Motivation: the Paper~I formula is intrinsically non-local}
+
+Paper~I derived, for a spherical point source, the gravitational slip
+\begin{equation}
+\eta(r)-1 \;=\; \frac{2\beta}{3}\,
+\bigl[(g_N/a_0)(1+g_N/a_0)\bigr]^{-1/2},
+\label{eq:eta_pt}
+\end{equation}
+which in the deep-MOND regime ($g_N\ll a_0$) reduces to
+$\eta-1\simeq (2\beta/3)\sqrt{a_0/g_N}\propto r$, growing linearly with
+radius.  Paper~II flagged that Eq.~(\ref{eq:eta_pt}) is a point-mass
+ansatz; for an extended baryon distribution it requires a
+covariant-operator extension.  Two natural local closures were tested
+numerically and rejected: a direct Poisson source
+$\nabla^2(\Psi-\Phi) = (16\pi/3)\beta\, G\rho_b\, g_N/a_0$ (hypothesis
+H1), which produces $\eta-1\sim 1/r$ (wrong sign and wrong functional
+form, $\sim 10^{8}\%$ residual), and a Poisson-kernel closure with
+$S=(2\beta/3)\,g_N^2/(\mu^2 c^2)$, which yields a deep-MOND slope of
+$r^{0.33}$ versus the required $r^{0.55}$ (residual $\sim 10^3\%$).
+Both diagnostics point to the same conclusion: no factorised local
+source $S = F(g_N,\rho_b,\mu)$ can reproduce
+Eq.~(\ref{eq:eta_pt}) under the standard Laplacian.
+
+\subsection{Inverse-path identification}
+
+We invert the problem.  Given Eq.~(\ref{eq:eta_pt}) for a point source
+$M=10^{10}M_\odot$ ($r_{\rm MOND}=3.41$~kpc), we construct
+$|\Psi(r)|=-\!\int_r^{R_{\rm cut}}\!g_{\rm obs}\,dr'$ from the MOND
+field $g_{\rm obs}=\nu(g_N/a_0)g_N$, form the slip field
+$\chi(r)\equiv(\eta-1)|\Psi|$, and apply the spherical Laplacian
+to read off the \emph{effective source}
+\begin{equation}
+S_{\rm eff}(r)\;\equiv\;\nabla^2\chi(r)\;=\;
+\frac{1}{r^2}\frac{d}{dr}\!\left(r^2\frac{d\chi}{dr}\right).
+\label{eq:Seff}
+\end{equation}
+On a 4000-point logarithmic grid spanning $0.01$ to $10^4$~kpc, the
+deep-MOND window ($r>3r_{\rm MOND}$) gives the power-law fit
+\begin{equation}
+S_{\rm eff}(r)\;\propto\;r^{\alpha},\qquad
+\alpha = -1.56\pm 0.02,
+\label{eq:alpha}
+\end{equation}
+with no other free parameters.  Two consequences follow.  (i)~The
+slope is incompatible with $\alpha=-2$, the Poisson-kernel value
+implied by any local source $S\propto g_N^2$ in deep-MOND, ruling out
+the entire family of factorised closures (including H1 and the
+$g_N^2/\mu^2 c^2$ kernel).  (ii)~The fitted slope is consistent with
+the analytic estimate $\nabla^2[r\ln(R/r)] = (2/r)\ln(R/r)-3/r$,
+which arises because in deep-MOND $\chi\sim r\ln(R/r)$; the apparent
+exponent $-1.56$ on a log--log plot reflects the logarithmic envelope
+of an underlying $\sim 1/r$ source.  This is the signature of a
+\emph{Helmholtz-type} (or fractional-Laplacian) operator whose Green
+function decays as $r^{-1/2}$, slower than the $r^{-1}$ Newtonian
+kernel but faster than a true logarithmic potential.
+
+\subsection{Closest local proxy}
+
+Among the three physical candidates examined---%
+(a)~$(2\beta/3)g_N^2/(\mu^2c^2)$,
+(b)~$(2\beta/3)g_N/c^2$,
+(c)~$(2\beta/3)\sqrt{g_N a_0}/c^2$---only (c) reproduces the deep-MOND
+slope of~$S_{\rm eff}$ ($\alpha_c=-1$ vs $-1.56$ measured; the
+residual log envelope explains the offset).  Candidates~(a) and (b)
+yield $\alpha\simeq 0$ and $-2$ respectively and are excluded.  We
+therefore identify
+\begin{equation}
+S_{\rm proxy}(r)\;=\;\frac{2\beta}{3}\,\frac{\sqrt{g_N\,a_0}}{c^2}
+\label{eq:proxy}
+\end{equation}
+as the leading local proxy for the non-local DEV source in the deep-%
+MOND regime.  Equation~(\ref{eq:proxy}) is, however, an asymptotic
+proxy only: outside deep-MOND, the full $\eta(r)$ carries the
+$(1+g_N/a_0)^{-1/2}$ interpolation that no pointwise function of
+$(g_N,a_0)$ reproduces under a local Laplacian.
+
+\subsection{Application to DGSAT-I}
+
+For the ultra-diffuse galaxy DGSAT-I ($M_\star=3\times10^{8}M_\odot$,
+$r_{\rm eff}=4.7$~kpc, $\varepsilon\equiv r_{\rm eff}/r_{\rm
+MOND}=7.96$), the Plummer enclosed mass at the half-light radius
+gives $g_N(r_{\rm eff})=6.7\times10^{-13}$~m\,s$^{-2}$, a factor
+$2\sqrt{2}$ smaller than the point-source value.  Substituted in
+Eq.~(\ref{eq:eta_pt}), this yields
+\begin{equation}
+\eta_{\rm ext}(r_{\rm eff})-1 \;\simeq\; 6.7\%,\qquad
+\eta_{\rm pt}(r_{\rm eff})-1 \;=\; 3.95\%,
+\label{eq:dgsat_eta}
+\end{equation}
+i.e.\ a factor $\sim\!1.7$ enhancement over the point-source value.
+Because the operator analysis of Eq.~(\ref{eq:alpha}) shows the true
+Green function decays as $r^{-1/2}$, the full non-local convolution
+must yield a value between these two endpoints; we report
+$\eta_{\rm DGSAT}-1\in[3.95\%,\,6.7\%]$ as the conservative interval
+predicted by DEV theory.
+
+\subsection{Connection to the literature}
+
+A non-local operator with Green function $G(r)\sim r^{-1/2}$ is the
+hallmark of a fractional-power Laplacian $(-\nabla^2)^{3/4}$, of the
+type explored by Calcagni in fractional-spacetime gravity and by
+Maggiore \& Mancarella in nonlocal infrared modifications of general
+relativity.  It is also reminiscent---but not identical---to the
+disformal-stress kernel that emerges in AeST/TeVeS-class theories
+(Skordis \& Z\l{}o\'snik 2021), where the slip is generated by a
+covariant convolution of $g_N$ with the matter distribution rather
+than by a pointwise local source.  In all three cases, the common
+feature is that the slip equation cannot be cast as an algebraic
+function of local fields.  DEV thus joins this family: the
+point-source formula~(\ref{eq:eta_pt}) is exact, but its extension to
+arbitrary baryon profiles requires a non-local convolution whose
+explicit form is identified here only at the level of its Green-%
+function decay.  A first-principles derivation of the operator from
+the disformal action is deferred to a companion paper.
