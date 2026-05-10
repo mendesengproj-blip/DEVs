@@ -26,9 +26,9 @@ DEV theory papers.
 **"Vacuum Excitation Dynamics: A Scalar-Vector-Tensor Field Theory of
 Dark Matter as a Phase Transition of the Quantum Vacuum"**
 
-> **Status:** Submitted to *Monthly Notices of the Royal Astronomical Society*
-> on 2026-05-05. Manuscript ID: **MN-26-1316-P**.
-> Affiliation correction submitted 2026-05-06.
+> **Status:** Submitted to *Physical Review D* on 2026-05-08.
+> Manuscript ID: **DS14085** — with editors.
+> (MNRAS MN-26-1316-P rejected on scope, 2026-05-05.)
 
 - DEV action and DBI kinetic term
 - SPARC fit (167 galaxies, χ²ᵥ = 1.20)
@@ -41,9 +41,9 @@ Dark Matter as a Phase Transition of the Quantum Vacuum"**
   (verified for all 6 UDG targets; min r_eff/r_MOND = 4.56)
 
 📁 Source: [`paper_I/`](paper_I/) — final submitted version:
-[`paper_I/dev_paper_FINAL_v2.tex`](paper_I/dev_paper_FINAL_v2.tex)
+[`paper_I/dev_paper_I_final.tex`](paper_I/dev_paper_I_final.tex)
 
-### Paper II — Stability, Robustness, and Naturalness (in preparation)
+### Paper II — Stability, Robustness, and Naturalness
 **"Stability, Scale Constraints, and Parameter Robustness of
 Vacuum Excitation Dynamics"**
 
@@ -55,7 +55,29 @@ Vacuum Excitation Dynamics"**
   not a derivation
 - Dark-photon kinetic mixing ruled out (required ε ~ 0.09 ≫ 10⁻³ bound)
 
-📁 Source: [`paper_II/`](paper_II/)
+📁 Source: [`paper_II/`](paper_II/) — final version:
+[`paper_II/dev_paper_II_FINAL.tex`](paper_II/dev_paper_II_FINAL.tex)
+
+> **Status:** Ready for submission to *JCAP*. Awaiting Paper I arXiv
+> number to update cross-reference.
+
+### Paper III — Non-Local Gravitational Slip in Vacuum Excitation Dynamics: Extended-Source Derivation
+
+**File:** [`paper_III/DEV_paper_III_FINAL.tex`](paper_III/DEV_paper_III_FINAL.tex)
+**Status:** Ready for submission (pending Paper I arXiv number)
+
+**Central result:** The gravitational slip operator of Paper I is
+intrinsically non-local. Numerical inverse-path analysis yields an
+effective source exponent α = −1.56 ± 0.02 in the deep-MOND regime,
+inconsistent with the Poisson kernel (α = −2) and consistent with a
+fractional Laplacian (−∇²)^{3/4} with Green function ∝ r^{−1/2}. The
+exponent is regime-dependent (α varies from −1.96 in the Newtonian
+regime to −1.41 for UDGs), consistent with the saturation axiom.
+Extended-source corrections yield η−1 ∈ [3.78%, 6.90%] for the six
+benchmark UDGs — all within Euclid sensitivity. First-principles
+derivation deferred to Paper IV.
+
+📁 Source: [`paper_III/`](paper_III/)
 
 ### Independent verifications
 
