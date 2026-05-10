@@ -1,0 +1,21 @@
+================================================================
+UNIVERSALITY TEST FOR alpha (DEV non-local operator)
+================================================================
+
+Profile                  epsilon       alpha       sigma
+--------------------------------------------------------
+A_pointsource               0.00     -1.6243      0.0091
+B_DF2                       4.56     -1.4452      0.0060
+C_DGSAT                     7.96     -1.4108      0.0071
+D_Hernquist                20.00     -1.9623      0.0168
+
+|alpha_A - alpha_B| = 0.1791
+|alpha_A - alpha_C| = 0.2135
+|alpha_A - alpha_D| = 0.3379
+max |Delta alpha|  = 0.3379
+
+VERDICT: NOT UNIVERSAL
+
+alpha depends on the profile. Report honestly
+as a limitation; first-principles derivation is
+the primary objective of Paper IV.
